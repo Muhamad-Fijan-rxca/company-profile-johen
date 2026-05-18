@@ -16,14 +16,19 @@
     .modal-close:hover { background: var(--bg); }
     .modal h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
     .modal .posisi-badge { margin-bottom: 24px; }
-    @media(max-width:768px) { .lowongan-card { flex-direction: column; } }
+    @media(max-width:768px) { 
+        .lowongan-card { flex-direction: column; gap: 16px; padding: 24px 20px; }
+        .lowongan-action { width: 100%; }
+        .lowongan-action .btn { width: 100%; justify-content: center; }
+        .modal { padding: 28px 20px; }
+    }
 </style>
 @endpush
 
 @section('content')
 <div class="page-hero">
-    <h1>Karir di Johen Gaming</h1>
-    <p>Bergabunglah dengan tim kami dan jadilah bagian dari revolusi gaming Indonesia.</p>
+    <h1>Karir di JOHEN GAMING</h1>
+    <p>Bergabunglah dengan tim profesional PT. Johen Sukses Abadi dan jadilah bagian dari industri digital gaming commerce Indonesia.</p>
 </div>
 
 <section class="section">
@@ -47,7 +52,7 @@
                     <div class="lowongan-meta">
                         <span><i class="fas fa-building"></i> {{ $l->departemen }}</span>
                         <span><i class="fas fa-briefcase"></i> {{ $l->tipe }}</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Jakarta</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Bandung</span>
                     </div>
                     <p class="lowongan-desc">{{ Str::limit($l->deskripsi, 180) }}</p>
                 </div>

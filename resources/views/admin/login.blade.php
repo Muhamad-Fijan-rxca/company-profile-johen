@@ -31,9 +31,9 @@
 <body>
     <div class="login-card">
         <div class="login-logo">
-            <div class="login-logo-icon">JG</div>
+            <img src="{{ asset('img/icon/icon_mengambang_logo.png') }}" alt="Johen Gaming" style="height:80px;width:auto;object-fit:contain;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(26,63,168,0.25));">
             <h1>Admin Panel</h1>
-            <p>PT Johen Gaming — Masuk untuk melanjutkan</p>
+            <p>PT. Johen Sukses Abadi — Masuk untuk melanjutkan</p>
         </div>
 
         @if($errors->any())

@@ -20,7 +20,11 @@
     .sidebar-berita h4 { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 4px; transition: color 0.2s; }
     .sidebar-berita span { font-size: 11px; color: var(--text-muted); }
     .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
-    @media(max-width:768px) { .article-layout { grid-template-columns: 1fr; } }
+    @media(max-width:768px) { 
+        .article-layout { grid-template-columns: 1fr; }
+        .article-header h1 { font-size: clamp(20px, 6vw, 32px); }
+        .article-body { font-size: 15px; }
+    }
 </style>
 @endpush
 

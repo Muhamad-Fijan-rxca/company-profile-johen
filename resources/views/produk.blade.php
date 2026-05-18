@@ -21,7 +21,7 @@
 @section('content')
 <div class="page-hero">
     <h1>Produk & Layanan</h1>
-    <p>Temukan semua layanan gaming terbaik yang kami sediakan untuk kebutuhan Anda.</p>
+    <p>Layanan digital gaming commerce lengkap dari JOHEN GAMING: jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming.</p>
 </div>
 
 <section class="section">

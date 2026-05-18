@@ -12,6 +12,10 @@
         <div class="stat-info"><span class="num">{{ $stats['berita'] }}</span><span class="label">Total Berita</span></div>
     </div>
     <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(245,166,35,0.1)">🎬</div>
+        <div class="stat-info"><span class="num">{{ $stats['konten_digital'] }}</span><span class="label">Konten Digital</span></div>
+    </div>
+    <div class="stat-card">
         <div class="stat-icon" style="background:rgba(16,185,129,0.1)">💼</div>
         <div class="stat-info"><span class="num">{{ $stats['lowongan'] }}</span><span class="label">Lowongan Aktif</span></div>
     </div>

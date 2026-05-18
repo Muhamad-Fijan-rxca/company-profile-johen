@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'PT Johen Gaming') | Solusi Lengkap Kebutuhan Game</title>
-    <meta name="description" content="@yield('meta_desc', 'PT Johen Gaming - Platform terpercaya untuk top up game, jual beli akun game, dan semua kebutuhan gaming Anda.')">
+    <title>@yield('title', 'PT. Johen Sukses Abadi') | JOHEN GAMING</title>
+    <meta name="description" content="@yield('meta_desc', 'PT. Johen Sukses Abadi (JOHEN GAMING) - Perusahaan digital gaming commerce terpercaya di Bandung. Jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming.')">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -345,12 +345,30 @@
         @media (max-width: 1024px) {
             .grid-4 { grid-template-columns: repeat(2,1fr); }
             .grid-3 { grid-template-columns: repeat(2,1fr); }
+            .container { padding: 0 20px; }
         }
         @media (max-width: 768px) {
             .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-            .section { padding: 56px 0; }
+            .section { padding: 48px 0; }
+            .section-header { margin-bottom: 36px; }
+            .section-title { font-size: clamp(22px, 6vw, 32px); }
+            .section-subtitle { font-size: 14px; }
             .form-row { grid-template-columns: 1fr; }
-            main { padding-top: 72px; }
+            .container { padding: 0 16px; }
+            .btn-lg { padding: 14px 28px; font-size: 14px; }
+            .page-hero { padding: 120px 16px 56px; }
+            .page-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+            .page-hero p { font-size: 14px; }
+            /* Floating buttons lebih kecil di mobile */
+            .floating-btn { width: 44px; height: 44px; font-size: 18px; border-radius: 12px; }
+            /* Card hover disabled di mobile (touch) */
+            .card:hover { transform: none; box-shadow: var(--shadow-md); }
+        }
+        @media (max-width: 480px) {
+            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+            .section { padding: 40px 0; }
+            .btn { padding: 11px 20px; font-size: 13px; }
+            .btn-lg { padding: 13px 24px; font-size: 14px; }
         }
     </style>
     @stack('styles')
@@ -365,10 +383,10 @@
 
     {{-- Floating Buttons --}}
     <div class="floating-btns">
-        <a href="https://wa.me/6281234567890" class="floating-btn wa" target="_blank" aria-label="WhatsApp">
+        <a href="https://wa.me/62812347070" class="floating-btn wa" target="_blank" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="tel:+6281234567890" class="floating-btn tel" aria-label="Telepon">
+        <a href="tel:+62812347070" class="floating-btn tel" aria-label="Telepon">
             <i class="fas fa-phone"></i>
         </a>
     </div>

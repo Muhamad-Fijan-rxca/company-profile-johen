@@ -15,41 +15,24 @@ class KontakController extends Controller
 
     public function kirim(Request $request)
     {
-        $rules = [
-            'tujuan' => 'required|in:jual,beli',
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'no_hp' => 'required|string|max:20',
-        ];
+        $validated = $request->validate([
+            'tujuan'    => 'required|in:cs',
+            'nama'      => 'required|string|max:255',
+            'email'     => 'required|email|max:255',
+            'no_hp'     => 'required|string|max:20',
+            'nama_game' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+        ]);
 
-        if ($request->tujuan === 'jual') {
-            $rules += [
-                'nama_game' => 'required|string|max:255',
-                'level_akun' => 'required|string|max:255',
-                'harga_harapan' => 'required|string|max:255',
-                'deskripsi' => 'required|string',
-            ];
-        } else {
-            $rules += [
-                'game_dicari' => 'required|string|max:255',
-                'budget_maksimal' => 'required|string|max:255',
-                'request_khusus' => 'nullable|string',
-            ];
-        }
-
-        $validated = $request->validate($rules);
         $pesan = PesanKontak::create($validated);
 
-        // Kirim notifikasi email ke admin
         try {
             Mail::send('emails.notif_kontak', ['pesan' => $pesan], function ($m) use ($pesan) {
                 $m->to(config('mail.from.address'))
-                  ->subject('[Johen Gaming] Pesan Baru: ' . strtoupper($pesan->tujuan) . ' Akun - ' . $pesan->nama);
+                  ->subject('[JOHEN GAMING] Pesan CS Baru - ' . $pesan->nama);
             });
-        } catch (\Exception $e) {
-            // Gagal kirim email tidak menghentikan proses
-        }
+        } catch (\Exception $e) {}
 
-        return back()->with('success', 'Pesan Anda berhasil dikirim! Tim kami akan segera menghubungi Anda.');
+        return back()->with('success', 'Pesan Anda berhasil dikirim! Tim CS kami akan segera menghubungi Anda.');
     }
 }

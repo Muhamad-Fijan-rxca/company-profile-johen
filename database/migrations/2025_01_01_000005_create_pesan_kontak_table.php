@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('pesan_kontak', function (Blueprint $table) {
             $table->id();
-            $table->enum('tujuan', ['jual', 'beli']);
+            $table->enum('tujuan', ['jual', 'beli', 'cs']);
             $table->string('nama');
             $table->string('email');
             $table->string('no_hp');

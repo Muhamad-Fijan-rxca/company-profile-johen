@@ -16,6 +16,7 @@ class DashboardController extends Controller
         $stats = [
             'produk' => Produk::count(),
             'berita' => Berita::count(),
+            'konten_digital' => \App\Models\KontenDigital::count(),
             'lowongan' => Lowongan::aktif()->count(),
             'pelamar' => Pelamar::count(),
             'pesan' => PesanKontak::count(),

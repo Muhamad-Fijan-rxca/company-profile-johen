@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;font-size:14px;color:#333}table{width:100%;border-collapse:collapse}td{padding:10px;border:1px solid #ddd}.header{background:linear-gradient(135deg,#1e3c72,#6a1b9a);color:white;padding:24px;text-align:center}.label{background:#f5f5f5;font-weight:bold;width:35%}</style></head>
 <body>
-<div class="header"><h2>PT Johen Gaming - Pesan Baru</h2></div>
+<div class="header"><h2>PT. Johen Sukses Abadi (JOHEN GAMING) - Pesan Baru</h2></div>
 <div style="padding:24px">
     <p>Ada pesan baru dari form Contact Us:</p>
     <table>

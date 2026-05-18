@@ -56,7 +56,7 @@
         .card-body { padding: 24px; }
 
         /* STATS */
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px; }
         .stat-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(43,89,195,0.08); display: flex; align-items: center; gap: 16px; }
         .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
         .stat-info .num { font-size: 24px; font-weight: 800; display: block; }
@@ -145,6 +145,9 @@
             </a>
             <a href="{{ route('admin.berita.index') }}" class="{{ request()->routeIs('admin.berita*') ? 'active' : '' }}">
                 <i class="fas fa-newspaper"></i> Berita
+            </a>
+            <a href="{{ route('admin.konten-digital.index') }}" class="{{ request()->routeIs('admin.konten-digital*') ? 'active' : '' }}">
+                <i class="fas fa-photo-video"></i> Konten Digital
             </a>
 
             <div class="nav-section-title">Karir</div>

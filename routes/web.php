@@ -6,6 +6,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KarirController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\KontenDigitalController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController as AdminProdukController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\Admin\LowonganController;
 use App\Http\Controllers\Admin\PelamarController;
 use App\Http\Controllers\Admin\PesanController;
+use App\Http\Controllers\Admin\KontenDigitalController as AdminKontenDigitalController;
 
 // ─── PUBLIC ROUTES ───────────────────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -22,6 +24,7 @@ Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/karir', [KarirController::class, 'index'])->name('karir');
 Route::post('/karir/lamar', [KarirController::class, 'lamar'])->name('karir.lamar');
+Route::get('/konten-digital', [KontenDigitalController::class, 'index'])->name('konten-digital');
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
 Route::post('/kontak/kirim', [KontakController::class, 'kirim'])->name('kontak.kirim');
 
@@ -47,6 +50,9 @@ Route::prefix('johen-admin-secret')->name('admin.')->group(function () {
 
         // Lowongan
         Route::resource('lowongan', LowonganController::class)->except(['show']);
+
+        // Konten Digital
+        Route::resource('konten-digital', AdminKontenDigitalController::class)->except(['show']);
 
         // Pelamar
         Route::get('/pelamar', [PelamarController::class, 'index'])->name('pelamar.index');

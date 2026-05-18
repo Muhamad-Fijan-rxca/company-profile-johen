@@ -21,7 +21,7 @@
 @section('content')
 <div class="page-hero">
     <h1>Johen News</h1>
-    <p>Berita terkini seputar dunia gaming dan update dari PT Johen Gaming.</p>
+    <p>Berita terkini seputar dunia gaming dan update dari PT. Johen Sukses Abadi (JOHEN GAMING).</p>
 </div>
 
 <section class="section">
