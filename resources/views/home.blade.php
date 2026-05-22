@@ -153,9 +153,9 @@
         0%, 100% { transform: translateY(0); }
         50%       { transform: translateY(-10px); }
     }
-    .hero-visual-float.f1 { top: 10%; left: 2%; animation-delay: 0s; }
-    .hero-visual-float.f2 { top: 58%; right: 2%; animation-delay: 1s; }
-    .hero-visual-float.f3 { bottom: 8%; left: 8%; animation-delay: 2s; }
+    .hero-visual-float.f1 { top: 8%; left: 8%; animation-delay: 0s; }
+    .hero-visual-float.f2 { top: 55%; right: 8%; animation-delay: 1s; }
+    .hero-visual-float.f3 { bottom: 8%; left: 18%; animation-delay: 2s; }
     .hero-visual-float .ficon {
         width: 38px; height: 38px;
         background: var(--primary-light); border-radius: 10px;
@@ -256,8 +256,11 @@
         .hero-desc { margin-left: auto; margin-right: auto; }
         .hero-actions { justify-content: center; }
         .hero-stats { justify-content: center; }
-        .hero-visual { justify-content: center; }
-        .hero-visual-float { display: none; }
+        .hero-visual { justify-content: center; padding-right: 0; }
+        .hero-visual-float { scale: 0.85; }
+        .hero-visual-float.f1 { top: -6%; left: -4%; }
+        .hero-visual-float.f2 { top: auto; bottom: 0; right: -4%; }
+        .hero-visual-float.f3 { bottom: 12%; left: -2%; }
     }
 </style>
 @endpush

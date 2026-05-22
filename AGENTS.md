@@ -3,54 +3,55 @@
 ## Stack
 
 Laravel 13 + Blade + Tailwind CSS 4 (via `@tailwindcss/vite`) + Vite.  
-PHP ^8.3, SQLite (dev & test), MySQL optional.  
-No frontend framework. Indonesian content.
+PHP ^8.3, SQLite (dev & test), MySQL opsional.  
+Tidak pakai frontend framework. Konten bahasa Indonesia.
 
-## Commands
+## Perintah
 
-| Command | What it does |
+| Perintah | Fungsi |
 |---------|-------------|
-| `composer setup` | Full first-time setup: install deps, copy `.env`, `key:generate`, `migrate --force`, `npm install --ignore-scripts`, `npm run build` |
-| `composer dev` | Runs 4 concurrently: `php artisan serve`, `queue:listen --tries=1 --timeout=0`, `pail --timeout=0`, `npm run dev` |
-| `composer test` | `php artisan config:clear` then `php artisan test` (SQLite in-memory) |
-| `npm run dev` | Vite dev server only (Blade hot reload) |
+| `composer setup` | Setup pertama: install dep, salin `.env`, `key:generate`, `migrate --force`, `npm install --ignore-scripts`, `npm run build` |
+| `composer dev` | Jalankan 4 proses concurrently (server, queue, pail logs, Vite) dengan warna berbeda |
+| `composer test` | `php artisan config:clear --ansi` lalu `php artisan test` (SQLite in-memory) |
+| `npm run dev` | Vite dev server saja (Blade hot reload) |
 | `npm run build` | Vite production build |
-| `./vendor/bin/pint` | Laravel Pint (PSR-12, no config file) |
+| `./vendor/bin/pint` | Laravel Pint (PSR-12, tanpa file konfigurasi) |
 
-## Architecture
+## Arsitektur
 
-- **Admin panel**: `/johen-admin-secret` (obfuscated, `routes/web.php:32`). Has its own layout (`admin.layout`).
-- **Entrypoints**: `public/index.php` (app), `resources/css/app.css` + `resources/js/app.js` (Vite inputs; `js/app.js` is empty).
-- **Fonts**: public layout (`layouts/app`) and admin layout (`admin/layout`) both use inline `<style>` and import **Poppins** directly from Google Fonts — NOT the `bunny()`-served 'Instrument Sans' set in `app.css`/Vite config.
-- **Public layout**: `resources/views/layouts/app.blade.php` — all public Blade templates extend it.
-- **Layouts**: both public and admin use inline `<style>` blocks with CSS variables, not Tailwind utility classes in templates. `app.css` uses Tailwind v4 syntax (`@import 'tailwindcss'`, `@source`, `@theme`).
-- **Logo**: `{{ asset('img/logo/johen_logo.png') }}` in header partial.
-- **Models** (7): `User`, `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`. Only `User` has a factory (`UserFactory.php`).
-- **Model scopes**: `scopeAktif()` on `Produk`, `Berita`, `Lowongan`, `KontenDigital`. `scopeUnggulan()` on `Produk` and `KontenDigital`.
-- **Berita model**: custom `generateSlug()` static method, computed `getRingkasanAttribute()` (strip_tags + Str::limit 150).
-- **Admin controllers**: `App\Http\Controllers\Admin\*`. Auth is plain Laravel (no Breeze/Jetstream). Logout is POST-only with CSRF.
-- **Seeder** (`DatabaseSeeder.php`) creates admin user (`admin@johengaming.com` / `Johen2025!`) + hardcoded content for all content models.
-- **Paginator**: custom view at `vendor.pagination.simple` set in `AppServiceProvider`.
-- **Email**: notification template at `emails.notif_kontak`. Failure is silently caught (empty `catch`).
+- **Panel admin**: prefix `/johen-admin-secret`, name `admin.*` (`routes/web.php:32`). Middleware `guest` untuk login (GET+POST); middleware `auth` untuk sisanya (logout POST-only, dashboard, semua CRUD).
+- **Rute publik** (9): home, tentang, produk, berita index+show, karir (GET+POST lamar), konten-digital, kontak (GET+POST kirim).
+- **Entrypoints**: `public/index.php` (app), `resources/css/app.css` + `resources/js/app.js` (input Vite; `js/app.js` kosong).
+- **Font**: layout publik dan admin sama-sama pakai inline `<style>` import **Poppins** dari Google Fonts — BUKAN 'Instrument Sans' dari `bunny()` di `app.css`/Vite config.
+- **Layout**: keduanya pakai inline `<style>` dengan CSS variable, bukan utility class Tailwind.
+- **Logo**: `{{ asset('img/logo/johen_logo.png') }}` di partial header. Hero background dari `public/img/bg/bg1.jpeg` dll. Semua di-gitignore — cek keberadaannya setelah clone.
+- **Model** (7): `User`, `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`. Hanya `User` punya factory.
+- **Scope model**: `scopeAktif()` di Produk, Berita, Lowongan, KontenDigital. `scopeUnggulan()` di Produk dan KontenDigital.
+- **Berita model**: method static `generateSlug()` sendiri, accessor `getRingkasanAttribute()` (strip_tags + Str::limit 150).
+- **Controller admin**: `App\Http\Controllers\Admin\*`. Auth pakai Laravel bawaan (tanpa Breeze/Jetstream). Logout wajib POST + CSRF.
+- **Seeder** (`DatabaseSeeder.php`) buat admin (`admin@johengaming.com` / `Johen2025!`) + konten hardcoded untuk semua model konten.
+- **Paginator**: custom view di `vendor.pagination.simple` diset di `AppServiceProvider` (prev/next saja, tanpa nomor halaman).
+- **Email**: template notifikasi di `emails.notif_kontak`. Gagal terkirim diamkan (catch kosong).
+- **Tidak ada CI**: direktori `.github/` tidak ada.
 
-## Key patterns
+## Pola penting
 
-- **Kontak form**: single CS form (`tujuan = cs` hidden input). Controller validates `tujuan => required|in:cs`. The email template `notif_kontak.blade.php` still has stale `jual`/`beli` branches that are unreachable with current validation — left as-is, but don't reintroduce jual/beli validation unless the template is also updated.
-- **CV uploads**: `$request->file('cv')->store('cv', 'public')` → `storage/app/public/cv/`. Requires `php artisan storage:link`.
-- **Composer `setup` auto-copies `.env.example` → `.env`** if missing (via `post-root-package-install` and the setup script itself).
-- **Admin routes** use resource controllers `->except(['show'])` for Produk, Berita, Lowongan, KontenDigital. Pelamar and Pesan are read-only (index + destroy; Pesan also has show).
+- **Upload CV**: `$request->file('cv')->store('cv', 'public')` → `storage/app/public/cv/`. Wajib `php artisan storage:link` setelah clone.
+- **Rute admin**: resource controller `->except(['show'])` untuk Produk, Berita, Lowongan, KontenDigital. Pelamar dan Pesan read-only (index + destroy; Pesan juga ada show).
+- **PesanKontak**: migrasi punya `tujuan` enum `jual/beli/cs` dengan kolom lengkap (nama_game, level_akun, harga_harapan, game_dicari, budget_maksimal, request_khusus, sudah_dibaca), tapi **controller hanya validasi `tujuan => required|in:cs`**. Template email `notif_kontak.blade.php` masih punya cabang `jual`/`beli` yang tidak terpakai — biarkan saja, jangan aktifkan validasi jual/beli kecuali template juga diupdate.
+- **Template** Blade extends `layouts.app` (publik) atau `admin.layout` (admin). Kedua layout pakai inline `<style>` — bukan utility class Tailwind di HTML.
+- **Tidak ada direktori `lang/`** — semua teks hardcode bahasa Indonesia di Blade template.
 
-## Gotchas
+## Jebakan
 
-- **`.npmrc`**: `ignore-scripts=true`. Adding packages with postinstall scripts (e.g. `esbuild`) needs `npm install --ignore-scripts=false <pkg>`.
-- **`.env.example` defaults**: `DB_CONNECTION=sqlite`, `SESSION_DRIVER=database`, `CACHE_STORE=database`, `QUEUE_CONNECTION=database`.
-- **APP_LOCALE**: defaults to `en` (not set in `.env.example`) despite all content being Indonesian.
-- **Vite fonts**: `bunny()` CDN for 'Instrument Sans' is configured but **unused** — both layouts use Poppins via direct Google Fonts link.
-- **Asset paths**: logo loaded from `public/img/logo/johen_logo.png`, hero backgrounds from `public/img/bg/bg1.jpeg` etc. These are gitignored in default Laravel setup — verify they exist after clone.
+- **`.npmrc`**: `ignore-scripts=true`. Menambah package dengan postinstall script (misal `esbuild`) perlu `npm install --ignore-scripts=false <pkg>`.
+- **Default `.env.example`**: `DB_CONNECTION=sqlite`, `SESSION_DRIVER=database`, `CACHE_STORE=database`, `QUEUE_CONNECTION=database`, `MAIL_MAILER=log`.
+- **`APP_LOCALE`**: default `en` (tidak diset di `.env.example`) padahal semua konten bahasa Indonesia.
+- **Font Vite**: `bunny()` CDN untuk 'Instrument Sans' sudah dikonfigurasi di `vite.config.js` tapi **tidak dipakai** — kedua layout pakai Poppins via Google Fonts langsung.
 
 ## Testing
 
-- `phpunit.xml` forces `APP_ENV=testing`, SQLite `:memory:`, array cache/mail/session, sync queue.
-- `RefreshDatabase` trait used in `Feature\ExampleTest.php`.
-- Only 2 example tests exist (`Feature/ExampleTest.php`, `Unit/ExampleTest.php`).
-- Order: always `config:clear` before running tests (`composer test` does this).
+- `phpunit.xml` paksa `APP_ENV=testing`, SQLite `:memory:`, array cache/mail/session, sync queue.
+- Pakai `RefreshDatabase` trait di `Feature\ExampleTest.php`.
+- Hanya 2 test skeleton (`Feature/ExampleTest.php`, `Unit/ExampleTest.php`).
+- Urutan: selalu `config:clear` sebelum test (`composer test` sudah otomatis).
