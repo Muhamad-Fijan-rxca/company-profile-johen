@@ -6,7 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'PT. Johen Sukses Abadi') | JOHEN GAMING</title>
     <meta name="description" content="@yield('meta_desc', 'PT. Johen Sukses Abadi (JOHEN GAMING) - Perusahaan digital gaming commerce terpercaya di Bandung. Jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming.')">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.svg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -376,6 +377,8 @@
     @include('partials.header')
 
     <main>@yield('content')</main>
+
+    @include('partials.cta')
 
     @include('partials.footer')
 

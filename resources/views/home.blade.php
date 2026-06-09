@@ -300,10 +300,10 @@
     .tentang-teks .btn-tentang {
         position: relative;
         display: inline-flex; align-items: center;
-        padding: 12px 28px 12px 44px;
+        padding: 14px 32px 14px 50px;
         border: 1px solid rgba(6,104,192,0.15);
         border-radius: 100px;
-        font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+        font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
         color: white;
         text-decoration: none; cursor: pointer;
         background: linear-gradient(90deg, #0668C0, #7035CC, #7035CC, #0668C0);
@@ -315,21 +315,21 @@
                     background-position 0.5s ease;
     }
     .tentang-teks .btn-tentang:hover {
-        padding: 12px 44px 12px 28px;
+        padding: 14px 50px 14px 32px;
         background-position: 100% 0%;
     }
     .tentang-teks .btn-tentang .arrow-wrap {
         position: absolute;
         top: 50%; left: 5px;
         transform: translateY(-50%) rotate(0deg);
-        width: 28px; height: 28px; border-radius: 50%;
+        width: 32px; height: 32px; border-radius: 50%;
         background: white;
         display: flex; align-items: center; justify-content: center;
         transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .tentang-teks .btn-tentang:hover .arrow-wrap {
-        left: calc(100% - 33px);
+        left: calc(100% - 37px);
         transform: translateY(-50%) rotate(45deg);
     }
     .tentang-teks .btn-tentang .arrow-wrap img {
@@ -586,67 +586,6 @@
         .testimoni-slide .ts-text { font-size: 12px; }
     }
 
-    /* ── PAYMENT MARQUEE + CTA ── */
-    .payment-section { background: #041640; }
-    .payment-marquee {
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-        padding: 32px 0;
-    }
-    .payment-marquee:hover .marquee-track {
-        animation-play-state: paused;
-    }
-    .marquee-track {
-        display: flex; gap: 48px; width: max-content;
-        animation: marqueeScroll 25s linear infinite;
-    }
-    @keyframes marqueeScroll {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-    .pay-logo {
-        flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-        cursor: pointer; text-decoration: none;
-    }
-    .pay-logo img {
-        transition: filter 0.3s ease, transform 0.3s ease;
-    }
-    .pay-logo:hover img {
-        filter: brightness(1.3) drop-shadow(0 0 12px rgba(0,212,255,0.6));
-        transform: translateY(-2px);
-    }
-
-    .cta-bottom {
-        padding: 80px 24px 100px; text-align: center;
-    }
-    .cta-bottom h2 {
-        font-size: clamp(28px, 4vw, 42px); font-weight: 900;
-        color: white; margin: 0 0 16px;
-    }
-    .cta-bottom p {
-        font-size: 16px; color: rgba(255,255,255,0.6);
-        max-width: 520px; margin: 0 auto 36px; line-height: 1.7;
-    }
-    .cta-bottom .btn-hubungi {
-        display: inline-flex; align-items: center; gap: 12px;
-        padding: 16px 40px; border-radius: 50px;
-        background: linear-gradient(135deg, #7c3aed, #2563eb);
-        color: white; font-weight: 700; font-size: 16px;
-        text-decoration: none; border: none; cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .cta-bottom .btn-hubungi:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 32px rgba(124,58,237,0.4);
-    }
-    .cta-bottom .btn-hubungi .btn-icon-wrap {
-        width: 32px; height: 32px; border-radius: 50%;
-        background: rgba(255,255,255,0.2);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 14px; flex-shrink: 0;
-    }
-
     /* ── HERO ENTRANCE ANIMATIONS ── */
     @keyframes heroFadeUp {
         from { opacity: 0; transform: translateY(32px); }
@@ -684,8 +623,8 @@
         .tentang .container { grid-template-columns: 1fr; gap: 48px; text-align: center; }
         .tentang-teks { text-align: center; }
         .tentang-teks p { margin-left: auto; margin-right: auto; }
-        .tentang-teks .btn-tentang { padding: 12px 44px 12px 28px; }
-        .tentang-teks .btn-tentang .arrow-wrap { left: calc(100% - 33px); transform: translateY(-50%) rotate(45deg); }
+        .tentang-teks .btn-tentang { padding: 14px 50px 14px 32px; }
+        .tentang-teks .btn-tentang .arrow-wrap { left: calc(100% - 37px); transform: translateY(-50%) rotate(45deg); }
     }
 </style>
 @endpush
@@ -994,52 +933,6 @@
             </div>
         </div>
         <div class="testimoni-dots" id="testimoniDots"></div>
-    </div>
-</section>
-
-{{-- PAYMENT MARQUEE + CTA --}}
-<section class="payment-section">
-    <div class="payment-marquee">
-        <div class="marquee-track">
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bri.png') }}" alt="BRI" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bni.png') }}" alt="BNI" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bca.png') }}" alt="BCA" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/mandiri.png') }}" alt="Mandiri" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/Gopay.png') }}" alt="GoPay" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/ovo.png') }}" alt="OVO" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/dana.png') }}" alt="DANA" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/shopeepay.png') }}" alt="ShopeePay" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/freefire.png') }}" alt="Free Fire" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/mobile-legend.png') }}" alt="Mobile Legend" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/pubg.png') }}" alt="PUBG" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/valorant.png') }}" alt="Valorant" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/roblox.png') }}" alt="Roblox" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/efootball.png') }}" alt="Efootball" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bri.png') }}" alt="BRI" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bni.png') }}" alt="BNI" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/bca.png') }}" alt="BCA" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/mandiri.png') }}" alt="Mandiri" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/Gopay.png') }}" alt="GoPay" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/ovo.png') }}" alt="OVO" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/dana.png') }}" alt="DANA" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/shopeepay.png') }}" alt="ShopeePay" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/freefire.png') }}" alt="Free Fire" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/mobile-legend.png') }}" alt="Mobile Legend" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/pubg.png') }}" alt="PUBG" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/valorant.png') }}" alt="Valorant" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/roblox.png') }}" alt="Roblox" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-            <a href="#" class="pay-logo" style="background:none;padding:0;"><img src="{{ asset('img/logo/efootball.png') }}" alt="Efootball" style="height:32px;width:auto;object-fit:contain;display:block;"></a>
-        </div>
-    </div>
-    <div class="cta-bottom">
-        <div class="container">
-            <h2>Siap Meningkatkan Pengalaman Gaming-mu?</h2>
-            <p>Top up lebih cepat, joki lebih aman, dan jual beli akun dengan proses transparan serta terpercaya.</p>
-            <a href="{{ route('kontak') }}" class="btn-hubungi">
-                <span class="btn-icon-wrap">📞</span>
-                Hubungi Kami
-            </a>
-        </div>
     </div>
 </section>
 
