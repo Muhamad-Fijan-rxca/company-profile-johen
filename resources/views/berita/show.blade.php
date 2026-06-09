@@ -29,7 +29,7 @@
 @endpush
 
 @section('content')
-<section class="section" style="background:white">
+<section class="section" style="background:var(--bg)">
     <div class="container">
         <div style="margin-bottom:24px">
             <a href="{{ route('berita') }}" style="color:var(--primary);text-decoration:none;font-size:14px;font-weight:500"><i class="fas fa-arrow-left"></i> Kembali ke Berita</a>

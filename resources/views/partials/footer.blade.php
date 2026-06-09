@@ -1,47 +1,6 @@
 <style>
-    .footer-wave {
-        display: block;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        margin-bottom: -2px;
-        background: linear-gradient(135deg, #1a3fa8 0%, #2b3b90 60%, #6a1b9a 100%);
-        position: relative;
-    }
-    /* Pattern + sama persis dengan CTA section */
-    .footer-wave::before {
-        content: '';
-        position: absolute; inset: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-    }
-    .footer-wave svg {
-        display: block;
-        width: 100%;
-        height: 180px;
-        position: relative;
-        z-index: 1;
-    }
-    /* Animasi wave bergerak pelan */
-    .footer-wave svg path:nth-child(1) {
-        animation: waveMove 8s ease-in-out infinite alternate;
-        transform-origin: center;
-    }
-    .footer-wave svg path:nth-child(2) {
-        animation: waveMove 6s ease-in-out infinite alternate-reverse;
-        transform-origin: center;
-    }
-    .footer-wave svg path:nth-child(3) {
-        animation: waveMove 10s ease-in-out infinite alternate;
-        transform-origin: center;
-    }
-    @keyframes waveMove {
-        0%   { d: path("M0,145 C160,90 320,165 480,120 C640,75 800,155 960,110 C1120,65 1300,145 1440,115 L1440,180 L0,180 Z"); }
-        100% { d: path("M0,115 C180,160 360,80 540,130 C720,175 900,85 1080,135 C1260,175 1380,100 1440,145 L1440,180 L0,180 Z"); }
-    }
     footer {
-        background: linear-gradient(180deg, #0a1128 0%, #0d1b4b 100%);
+        background: linear-gradient(180deg, #01203c 0%, #052a48 100%);
         color: rgba(255,255,255,0.7);
         padding: 0;
         position: relative;
@@ -124,7 +83,7 @@
         border-color: transparent;
         color: white;
         transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(26,63,168,0.4);
+        box-shadow: 0 8px 24px rgba(124,58,237,0.4);
     }
     .footer-social a:hover::before { opacity: 1; }
 
@@ -194,7 +153,7 @@
         background: var(--gradient);
         border-color: transparent;
         color: white;
-        box-shadow: 0 4px 16px rgba(26,63,168,0.3);
+        box-shadow: 0 4px 16px rgba(124,58,237,0.3);
     }
     .footer-contact-item .icon i { color: #93c5fd; transition: color 0.3s; }
     .footer-contact-item:hover .icon i { color: white; }
@@ -251,7 +210,7 @@
     }
     @media (max-width: 768px) {
         .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; padding: 56px 20px 32px; }
-        .footer-wave svg { height: 120px; }
+        .footer-wave svg { height: 30px; }
     }
     @media (max-width: 600px) {
         .footer-main { grid-template-columns: 1fr; gap: 32px; padding: 48px 16px 28px; }
@@ -259,24 +218,11 @@
         .footer-bottom { flex-direction: column; gap: 12px; text-align: center; padding: 20px 16px; }
         .footer-bottom-left, .footer-bottom-right { flex-direction: column; gap: 6px; }
         .footer-bottom .divider-dot { display: none; }
-        .footer-wave svg { height: 80px; }
+        .footer-wave svg { height: 20px; }
     }
 </style>
 
-{{-- WAVE --}}
-<div class="footer-wave" id="footerWave">
-    <svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Layer 1: paling belakang -->
-        <path d="M0,120 C120,60 240,160 360,100 C480,40 600,140 720,90 C840,40 960,130 1080,80 C1200,30 1320,110 1440,70 L1440,180 L0,180 Z"
-              fill="#0a1128" opacity="0.4"/>
-        <!-- Layer 2: tengah -->
-        <path d="M0,130 C200,60 400,160 600,100 C800,40 1000,150 1200,90 C1320,60 1400,120 1440,100 L1440,180 L0,180 Z"
-              fill="#0a1128" opacity="0.7"/>
-        <!-- Layer 3: depan solid -->
-        <path d="M0,145 C160,90 320,165 480,120 C640,75 800,155 960,110 C1120,65 1300,145 1440,115 L1440,180 L0,180 Z"
-              fill="#0a1128"/>
-    </svg>
-</div>
+
 
 <footer>
     <div class="footer-main">

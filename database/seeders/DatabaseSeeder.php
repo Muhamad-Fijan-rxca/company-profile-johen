@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
             ['nama' => 'Jual Beli Akun eFootball', 'kategori' => 'Jual Beli Akun', 'deskripsi' => 'Akun eFootball dengan pemain dan pelatih top. Tim lengkap siap pakai.', 'harga' => 'Mulai Rp 50.000', 'unggulan' => false, 'urutan' => 7],
             ['nama' => 'Jasa Joki Game Profesional', 'kategori' => 'Jasa Joki', 'deskripsi' => 'Layanan joki untuk push rank, event, dan misi game. Dikerjakan oleh player profesional dan terpercaya.', 'harga' => 'Mulai Rp 75.000', 'unggulan' => true, 'urutan' => 8],
             ['nama' => 'Live Commerce Gaming', 'kategori' => 'Live Commerce', 'deskripsi' => 'Live streaming penjualan akun dan top up game langsung melalui sosial media. Proses transparan dan interaktif.', 'harga' => 'Hubungi Kami', 'unggulan' => false, 'urutan' => 9],
-            ['nama' => 'Konten Digital Gaming', 'kategori' => 'Konten Digital', 'deskripsi' => 'Layanan pembuatan dan pengelolaan konten digital gaming untuk branding media sosial dan promosi bisnis.', 'harga' => 'Hubungi Kami', 'unggulan' => false, 'urutan' => 10],
         ];
 
         foreach ($produk as $p) {

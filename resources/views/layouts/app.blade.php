@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'PT. Johen Sukses Abadi') | JOHEN GAMING</title>
     <meta name="description" content="@yield('meta_desc', 'PT. Johen Sukses Abadi (JOHEN GAMING) - Perusahaan digital gaming commerce terpercaya di Bandung. Jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming.')">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -14,22 +15,22 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --primary:       #1a3fa8;
-            --primary-dark:  #0f2878;
-            --primary-light: #e8eeff;
-            --accent:        #f5a623;
-            --accent-hover:  #e09410;
-            --purple:        #6a1b9a;
-            --gradient:      linear-gradient(135deg, #1a3fa8 0%, #2b3b90 60%, #6a1b9a 100%);
-            --text:          #1a1a2e;
-            --text-muted:    #6b7280;
-            --bg:            #f5f7ff;
-            --white:         #ffffff;
-            --border:        #e5e7eb;
-            --shadow-sm:     0 2px 8px rgba(26,63,168,0.08);
-            --shadow-md:     0 4px 24px rgba(26,63,168,0.12);
-            --shadow-lg:     0 12px 48px rgba(26,63,168,0.18);
-            --radius:        14px;
+            --primary:       #2563eb;
+            --primary-dark:  #1a4a9e;
+            --primary-light: rgba(37,99,235,0.15);
+            --accent:        #00d4ff;
+            --accent-hover:  #00b8e6;
+            --purple:        #7c3aed;
+            --gradient:      linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --text:          #f0f4ff;
+            --text-muted:    #a0aec0;
+            --bg:            #01203c;
+            --white:         #052a48;
+            --border:        rgba(37,99,235,0.15);
+            --shadow-sm:     0 2px 8px rgba(0,0,0,0.3);
+            --shadow-md:     0 4px 24px rgba(0,0,0,0.4);
+            --shadow-lg:     0 12px 48px rgba(0,0,0,0.5);
+            --radius:        16px;
             --radius-sm:     8px;
         }
 
@@ -56,7 +57,7 @@
         h3 { font-size: clamp(20px, 3vw, 28px); font-weight: 700; }
         h4 { font-size: clamp(18px, 2.5vw, 22px); font-weight: 600; }
         p { margin: 0 0 16px; line-height: 1.75; }
-        strong { font-weight: 700; color: var(--primary); }
+        strong { font-weight: 700; color: var(--accent); }
         a { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
         a:hover { transform: translateY(-1px); }
 
@@ -70,18 +71,18 @@
         .section-header { text-align: center; margin-bottom: 56px; }
         .section-tag {
             display: inline-flex; align-items: center; gap: 8px;
-            background: var(--primary-light);
-            color: var(--primary);
+            background: rgba(0,212,255,0.08);
+            color: var(--accent);
             font-size: 11px; font-weight: 800;
             padding: 7px 18px; border-radius: 100px;
             margin-bottom: 16px;
             letter-spacing: 2px; text-transform: uppercase;
-            border: 1px solid rgba(26,63,168,0.15);
+            border: 1px solid rgba(0,212,255,0.2);
         }
         .section-tag::before {
             content: '';
             width: 6px; height: 6px;
-            background: var(--primary);
+            background: var(--accent);
             border-radius: 50%;
             display: inline-block;
         }
@@ -142,7 +143,7 @@
             transition: border-color 0.3s;
             pointer-events: none;
         }
-        .card:hover::after { border-color: rgba(26,63,168,0.15); }
+        .card:hover::after { border-color: rgba(0,212,255,0.2); }
 
         /* ── GRID ── */
         .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
@@ -173,41 +174,42 @@
         .btn-primary {
             background: var(--gradient);
             color: white;
-            box-shadow: 0 4px 20px rgba(26,63,168,0.35);
+            box-shadow: 0 4px 20px rgba(124,58,237,0.35);
         }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 32px rgba(26,63,168,0.45);
+            box-shadow: 0 10px 32px rgba(124,58,237,0.45);
         }
         .btn-accent {
-            background: var(--accent);
+            background: var(--gradient);
             color: white;
-            box-shadow: 0 4px 20px rgba(245,166,35,0.4);
+            box-shadow: 0 4px 20px rgba(124,58,237,0.35);
         }
         .btn-accent:hover {
-            background: var(--accent-hover);
             transform: translateY(-3px);
-            box-shadow: 0 10px 32px rgba(245,166,35,0.5);
+            box-shadow: 0 10px 32px rgba(124,58,237,0.45);
         }
         .btn-outline {
             background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
         .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+            background: rgba(0,212,255,0.1);
+            color: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(26,63,168,0.3);
+            box-shadow: 0 8px 24px rgba(0,212,255,0.2);
         }
         .btn-white {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
         }
         .btn-white:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 10px 32px rgba(0,0,0,0.18); 
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(0,0,0,0.3);
         }
         .btn-lg { padding: 16px 36px; font-size: 15px; }
         .btn-sm { padding: 8px 18px; font-size: 13px; }
@@ -217,10 +219,10 @@
             display: inline-block; padding: 4px 14px;
             border-radius: 100px; font-size: 12px; font-weight: 600;
         }
-        .badge-primary { background: var(--primary-light); color: var(--primary); }
-        .badge-success { background: #d1fae5; color: #065f46; }
-        .badge-warning { background: #fef3c7; color: #92400e; }
-        .badge-danger  { background: #fee2e2; color: #991b1b; }
+        .badge-primary { background: rgba(0,212,255,0.12); color: var(--accent); }
+        .badge-success { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+        .badge-warning { background: rgba(245,166,35,0.15); color: #fbbf24; }
+        .badge-danger  { background: rgba(239,68,68,0.15); color: #fca5a5; }
 
         /* ── ALERT ── */
         .alert {
@@ -228,8 +230,8 @@
             margin-bottom: 24px; font-size: 14px;
             display: flex; align-items: center; gap: 10px;
         }
-        .alert-success { background: #d1fae5; color: #065f46; border-left: 4px solid #10b981; }
-        .alert-error   { background: #fee2e2; color: #991b1b; border-left: 4px solid #ef4444; }
+        .alert-success { background: rgba(16,185,129,0.12); color: #6ee7b7; border-left: 4px solid #10b981; }
+        .alert-error   { background: rgba(239,68,68,0.12); color: #fca5a5; border-left: 4px solid #ef4444; }
 
         /* ── FORM ── */
         .form-group { margin-bottom: 20px; }
@@ -240,12 +242,12 @@
             border-radius: var(--radius-sm);
             font-family: 'Poppins', sans-serif;
             font-size: 14px; color: var(--text);
-            background: white; outline: none;
+            background: rgba(255,255,255,0.06); outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26,63,168,0.1);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
         }
         .form-control.is-invalid { border-color: #ef4444; }
         .invalid-feedback { color: #ef4444; font-size: 12px; margin-top: 4px; }
@@ -256,10 +258,24 @@
 
         /* ── PAGE HERO (inner pages) ── */
         .page-hero {
-            background: var(--gradient);
+            background:
+                radial-gradient(ellipse 60% 50% at 70% 50%, rgba(37,99,235,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 30%, rgba(124,58,237,0.08) 0%, transparent 70%),
+                linear-gradient(160deg, #01203c 0%, #052a48 50%, #0a3050 100%);
             color: white; 
             padding: 152px 24px 72px;
             text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: repeating-linear-gradient(-55deg,
+                transparent, transparent 60px,
+                rgba(255,255,255,0.015) 60px,
+                rgba(255,255,255,0.015) 61px);
+            pointer-events: none;
         }
         .page-hero::before {
             content: '';
@@ -325,22 +341,6 @@
         }
 
         /* ── FLOATING BUTTONS ── */
-        .floating-btns {
-            position: fixed; left: 16px; bottom: 32px;
-            display: flex; flex-direction: column; gap: 10px;
-            z-index: 999;
-        }
-        .floating-btn {
-            width: 52px; height: 52px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; color: white; text-decoration: none;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .floating-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-        .floating-btn.wa  { background: #25d366; }
-        .floating-btn.tel { background: var(--primary); }
-
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .grid-4 { grid-template-columns: repeat(2,1fr); }
@@ -359,8 +359,6 @@
             .page-hero { padding: 120px 16px 56px; }
             .page-hero h1 { font-size: clamp(24px, 7vw, 36px); }
             .page-hero p { font-size: 14px; }
-            /* Floating buttons lebih kecil di mobile */
-            .floating-btn { width: 44px; height: 44px; font-size: 18px; border-radius: 12px; }
             /* Card hover disabled di mobile (touch) */
             .card:hover { transform: none; box-shadow: var(--shadow-md); }
         }
@@ -381,16 +379,6 @@
 
     @include('partials.footer')
 
-    {{-- Floating Buttons --}}
-    <div class="floating-btns">
-        <a href="https://wa.me/62812347070" class="floating-btn wa" target="_blank" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+62812347070" class="floating-btn tel" aria-label="Telepon">
-            <i class="fas fa-phone"></i>
-        </a>
-    </div>
-
     <script>
         // Scroll reveal - semua variants
         const revealObserver = new IntersectionObserver(entries => {
@@ -407,18 +395,19 @@
         // Counter animasi untuk angka statistik
         function animateCounter(el) {
             const target = el.dataset.target;
-            const isPlus = target.includes('+');
-            const isSlash = target.includes('/');
-            if (isSlash) { el.textContent = target; return; }
-            const num = parseInt(target.replace(/[^0-9]/g, ''));
-            const suffix = target.replace(/[0-9]/g, '');
+            if (target.includes('/')) { el.textContent = target; return; }
+            const isDecimal = target.includes('.');
+            const num = parseFloat(target.replace(/[^0-9.]/g, ''));
+            const suffix = target.replace(/[0-9.]/g, '');
+            const decimals = isDecimal ? (target.split('.')[1]?.length || 1) : 0;
             let start = 0;
             const duration = 2000;
             const step = (timestamp) => {
                 if (!start) start = timestamp;
                 const progress = Math.min((timestamp - start) / duration, 1);
                 const eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.floor(eased * num) + suffix;
+                const current = eased * num;
+                el.textContent = (isDecimal ? current.toFixed(decimals) : Math.floor(current)) + suffix;
                 if (progress < 1) requestAnimationFrame(step);
             };
             requestAnimationFrame(step);

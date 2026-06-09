@@ -5,18 +5,18 @@
         border-bottom: 1px solid transparent;
         transition: background 0.4s ease, border-color 0.4s ease,
                     box-shadow 0.4s ease, backdrop-filter 0.4s ease;
-        height: 80px;
+        height: 90px;
     }
     .navbar.scrolled {
-        background: rgba(15, 40, 120, 0.85);
+        background: rgba(5,42,72,0.92);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(0,212,255,0.08);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     }
     .nav-inner {
         width: 100%;
-        padding: 0 32px 0 32px; height: 100%;
+        padding: 0 40px; height: 100%;
         display: flex; align-items: center;
     }
 
@@ -37,7 +37,7 @@
         animation: navSlideDown 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
     }
     .nav-logo img {
-        height: 44px; width: auto;
+        height: 50px; width: auto;
         object-fit: contain; display: block;
         transition: opacity 0.3s;
     }
@@ -52,11 +52,70 @@
 
     /* MENU — mentok kanan via margin-left: auto */
     .nav-menu {
-        display: flex; align-items: center; gap: 4px;
+        display: flex; align-items: center; gap: 14px;
         list-style: none;
         margin-left: auto;
         flex-shrink: 0;
     }
+    .dropdown-arrow {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
+        margin-left: 6px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        top: -3px;
+    }
+    .nav-dropdown:hover .dropdown-arrow {
+        transform: rotate(-135deg);
+        border-right-color: #7035CC;
+        border-bottom-color: #0668C0;
+    }
+
+    /* ── DROPDOWN SUBMENU ── */
+    .nav-dropdown { position: relative; }
+    .submenu {
+        position: absolute;
+        top: calc(100% - 4px);
+        left: 0;
+        min-width: 210px;
+        background: rgba(5,42,72,0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 12px;
+        padding: 8px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        list-style: none;
+        z-index: 100;
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-dropdown:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .submenu li a {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: rgba(255,255,255,0.85) !important;
+        border-radius: 8px;
+        white-space: nowrap;
+        border-bottom: none;
+    }
+    .submenu li a::after {
+        bottom: 2px;
+        left: 16px;
+        right: 16px;
+    }
+    .submenu li:last-child a { border-bottom: none; }
     .nav-menu li { animation: navFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both; }
     .nav-menu li:nth-child(1) { animation-delay: 0.15s; }
     .nav-menu li:nth-child(2) { animation-delay: 0.22s; }
@@ -66,47 +125,110 @@
     .nav-menu li:nth-child(6) { animation-delay: 0.50s; }
     .nav-menu li:nth-child(7) { animation-delay: 0.57s; }
     .nav-menu li a {
-        display: block; padding: 9px 16px;
-        font-size: 14px; font-weight: 500;
+        display: block; padding: 12px 22px;
+        font-size: 16px; font-weight: 500;
         color: var(--text-muted);
         text-decoration: none; border-radius: 100px;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         white-space: nowrap; position: relative;
     }
-    /* Underline animasi */
-    .navbar.scrolled .nav-menu li:not(.nav-cta) a::after {
+    /* Underline animasi — semua state */
+    .nav-menu li:not(.nav-cta) a::after {
         content: '';
         position: absolute;
-        bottom: 4px; left: 16px; right: 16px;
-        height: 2px; background: rgba(255,255,255,0.6);
+        bottom: 4px; left: 18px; right: 18px;
+        height: 2px;
         border-radius: 1px; transform: scaleX(0);
         transform-origin: center;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .navbar.scrolled .nav-menu li:not(.nav-cta) a:hover::after,
-    .navbar.scrolled .nav-menu li:not(.nav-cta) a.active::after { transform: scaleX(1); }
+    .navbar:not(.scrolled) .nav-menu li:not(.nav-cta) a::after { background: linear-gradient(90deg, #0668C0, #7035CC); }
+    .navbar.scrolled .nav-menu li:not(.nav-cta) a::after { background: linear-gradient(90deg, #0668C0, #7035CC); }
+    .nav-menu li:not(.nav-cta) a:hover::after,
+    .nav-menu li:not(.nav-cta) a.active::after { transform: scaleX(1); }
 
     /* Transparan (belum scroll) */
     .navbar:not(.scrolled) .nav-menu li a { color: rgba(255,255,255,0.85); }
-    .navbar:not(.scrolled) .nav-menu li a:hover { color: white; background: rgba(255,255,255,0.15); }
-    .navbar:not(.scrolled) .nav-menu li a.active { color: white; background: rgba(255,255,255,0.2); }
+    .navbar:not(.scrolled) .nav-menu li:not(.nav-cta) a:hover {
+        background: linear-gradient(90deg, #0668C0, #7035CC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .navbar:not(.scrolled) .nav-menu li:not(.nav-cta) a.active {
+        background: linear-gradient(90deg, #0668C0, #7035CC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
     .navbar:not(.scrolled) .hamburger span { background: white; }
+    .navbar:not(.scrolled) .nav-menu li.nav-cta a:hover,
+    .navbar:not(.scrolled) .nav-menu li.nav-cta a.active { color: white; }
 
     /* Sudah scroll */
     .navbar.scrolled .nav-menu li a { color: rgba(255,255,255,0.85); }
-    .navbar.scrolled .nav-menu li a:hover { color: white; background: rgba(255,255,255,0.12); }
-    .navbar.scrolled .nav-menu li a.active { color: white; font-weight: 700; background: rgba(255,255,255,0.15); }
+    .navbar.scrolled .nav-menu li:not(.nav-cta) a:hover {
+        background: linear-gradient(90deg, #0668C0, #7035CC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .navbar.scrolled .nav-menu li:not(.nav-cta) a.active {
+        background: linear-gradient(90deg, #0668C0, #7035CC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .navbar.scrolled .nav-menu li.nav-cta a:hover,
+    .navbar.scrolled .nav-menu li.nav-cta a.active { color: white; }
     .navbar.scrolled .hamburger span { background: white; }
 
     /* CTA */
     .nav-menu li.nav-cta a {
-        background: var(--accent); color: white;
-        padding: 10px 22px; border-radius: 100px;
-        font-weight: 700; box-shadow: 0 4px 14px rgba(245,166,35,0.4);
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 4px 20px rgba(112,53,204,0.25);
+        background: linear-gradient(90deg, #0668C0, #7035CC, #7035CC, #0668C0);
+        background-size: 200% 100%;
+        background-position: 0% 0%;
+        border: 1px solid rgba(6,104,192,0.15);
+        color: white;
+        text-decoration: none;
+        padding: 12px 28px 12px 44px;
+        transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    background-position 0.5s ease;
+        overflow: hidden;
     }
     .nav-menu li.nav-cta a:hover {
-        background: var(--accent-hover); transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(245,166,35,0.5);
+        padding: 12px 44px 12px 28px;
+        background-position: 100% 0%;
+    }
+    .cta-icon {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 28px;
+        height: 28px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .nav-menu li.nav-cta a:hover .cta-icon {
+        left: calc(100% - 33px);
+    }
+    .cta-img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        display: block;
     }
 
     /* HAMBURGER */
@@ -116,6 +238,7 @@
         border-radius: 8px; transition: background 0.2s;
         animation: navSlideDown 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
         flex-shrink: 0;
+        margin-left: auto;
     }
     .hamburger:hover { background: rgba(255,255,255,0.15); }
     .hamburger span {
@@ -127,17 +250,16 @@
     .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* MOBILE */
-    @media (max-width: 900px) {
-        .navbar { height: 68px; }
-        .nav-inner { padding: 0 16px; }
-        .nav-logo img { height: 36px; }
-        .nav-logo-tagline { font-size: 9px; }
+    /* MOBILE / TABLET */
+    @media (max-width: 1024px) {
+        .navbar { height: 76px; }
+        .nav-inner { padding: 0 20px; }
+        .nav-logo img { height: 40px; }
         .hamburger { display: flex; }
         .nav-menu {
             display: none; position: fixed;
             top: 68px; left: 0; right: 0;
-            background: rgba(10, 25, 80, 0.97);
+            background: rgba(1,32,60,0.97);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             flex-direction: column; align-items: stretch;
             padding: 16px 16px 24px; gap: 4px;
@@ -153,18 +275,47 @@
             font-size: 15px; font-weight: 500;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
+        .nav-menu li:not(.nav-cta) a::after { display: none; }
         .nav-menu li:last-child a { border-bottom: none; }
-        .nav-menu li a:hover, .nav-menu li a.active {
-            background: rgba(255,255,255,0.1) !important;
-            color: white !important;
+        .nav-menu li:not(.nav-cta) a:hover,
+        .nav-menu li:not(.nav-cta) a.active {
+            background: rgba(6,104,192,0.1) !important;
+            color: #0668C0 !important;
         }
+        .submenu {
+            position: static; opacity: 1; visibility: visible; transform: none;
+            box-shadow: none; background: transparent; backdrop-filter: none;
+            -webkit-backdrop-filter: none; border: none; padding: 0 0 0 16px; margin-top: 2px;
+            min-width: auto; border-radius: 0;
+        }
+        .submenu li a { font-size: 14px; padding: 10px 16px; }
         .nav-menu li.nav-cta { margin-top: 8px; }
         .nav-menu li.nav-cta a {
-            text-align: center;
-            background: var(--accent) !important;
+            background: linear-gradient(90deg, #0668C0, #7035CC) !important;
             border-radius: 100px !important;
             border-bottom: none !important;
-            box-shadow: 0 4px 16px rgba(245,166,35,0.4);
+            box-shadow: 0 4px 16px rgba(112,53,204,0.4);
+            padding: 9px 20px 9px 34px !important;
+            transition: none !important;
+        }
+        .nav-menu li.nav-cta a:hover,
+        .nav-menu li.nav-cta a.active {
+            background: linear-gradient(90deg, #7035CC, #0668C0) !important;
+            color: white !important;
+            padding: 9px 20px 9px 34px !important;
+            box-shadow: 0 4px 16px rgba(112,53,204,0.4);
+        }
+        .nav-menu li.nav-cta a:hover .cta-icon,
+        .nav-menu li.nav-cta a.active .cta-icon {
+            left: 5px !important;
+        }
+        .nav-menu li.nav-cta a .cta-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .nav-menu li.nav-cta a .cta-img {
+            width: 12px;
+            height: 12px;
         }
     }
 </style>
@@ -173,17 +324,24 @@
     <div class="nav-inner">
         <a href="{{ route('home') }}" class="nav-logo">
             <img src="{{ asset('img/logo/johen_logo.png') }}" alt="Johen Gaming" height="44">
-            <span class="nav-logo-tagline">Bermain game lebih seru bersama johen gaming</span>
         </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="{{ route('home') }}"   class="{{ request()->routeIs('home')    ? 'active' : '' }}">Home</a></li>
+            <li><a href="{{ route('home') }}"   class="{{ request()->routeIs('home')    ? 'active' : '' }}">Beranda</a></li>
             <li><a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'active' : '' }}">Tentang</a></li>
-            <li><a href="{{ route('produk') }}"  class="{{ request()->routeIs('produk')  ? 'active' : '' }}">Produk</a></li>
-            <li><a href="{{ route('berita') }}"  class="{{ request()->routeIs('berita*') ? 'active' : '' }}">Johen News</a></li>
+            <li class="nav-dropdown">
+                <a href="#" class="{{ request()->routeIs('produk*') ? 'active' : '' }}" onclick="return false;">Produk <span class="dropdown-arrow"></span></a>
+                <ul class="submenu">
+                    <li><a href="{{ route('produk.top-up') }}" class="{{ request()->routeIs('produk.top-up') ? 'active' : '' }}">Topup Game</a></li>
+                    <li><a href="{{ route('produk.joki-ml') }}" class="{{ request()->routeIs('produk.joki-ml') ? 'active' : '' }}">Joki Mobile Legend</a></li>
+                    <li><a href="{{ route('produk.jual-beli-akun') }}" class="{{ request()->routeIs('produk.jual-beli-akun') ? 'active' : '' }}">Jual Beli Akun</a></li>
+                    <li><a href="{{ route('produk.live-commerce') }}" class="{{ request()->routeIs('produk.live-commerce') ? 'active' : '' }}">Live Commerce</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ route('berita') }}"  class="{{ request()->routeIs('berita*') ? 'active' : '' }}">Berita</a></li>
             <li><a href="{{ route('konten-digital') }}" class="{{ request()->routeIs('konten-digital') ? 'active' : '' }}">Konten Digital</a></li>
             <li><a href="{{ route('karir') }}"   class="{{ request()->routeIs('karir')   ? 'active' : '' }}">Karir</a></li>
-            <li class="nav-cta"><a href="{{ route('kontak') }}">Kontak</a></li>
+            <li class="nav-cta"><a href="{{ route('kontak') }}"><span class="cta-icon"><img src="{{ asset('img/icon/telpon.png') }}" alt="Phone" class="cta-img"></span> Hubungi Kami</a></li>
         </ul>
 
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">

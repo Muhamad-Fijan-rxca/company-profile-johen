@@ -20,6 +20,10 @@ use App\Http\Controllers\Admin\KontenDigitalController as AdminKontenDigitalCont
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang', fn() => view('tentang'))->name('tentang');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+Route::get('/produk/top-up', [ProdukController::class, 'topUp'])->name('produk.top-up');
+Route::get('/produk/joki-ml', [ProdukController::class, 'jokiMl'])->name('produk.joki-ml');
+Route::get('/produk/jual-beli-akun', [ProdukController::class, 'jualBeliAkun'])->name('produk.jual-beli-akun');
+Route::get('/produk/live-commerce', [ProdukController::class, 'liveCommerce'])->name('produk.live-commerce');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/karir', [KarirController::class, 'index'])->name('karir');

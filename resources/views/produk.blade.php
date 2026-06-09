@@ -4,7 +4,7 @@
 @push('styles')
 <style>
     .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-    .filter-btn { padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; border: 2px solid var(--border); background: white; color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
+    .filter-btn { padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; border: 2px solid var(--border); background: transparent; color: var(--text-muted); text-decoration: none; transition: all 0.2s; }
     .filter-btn:hover, .filter-btn.active { background: var(--gradient); color: white; border-color: transparent; }
     .produk-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
     .produk-img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-size: 56px; }
@@ -12,7 +12,7 @@
     .card-body h3 { font-size: 16px; font-weight: 600; margin: 10px 0 8px; }
     .card-body p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
     .card-footer { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-top: 1px solid var(--border); }
-    .harga { font-weight: 700; color: var(--primary); font-size: 15px; }
+    .harga { font-weight: 700; color: var(--accent); font-size: 15px; }
     .empty-state { text-align: center; padding: 80px 24px; color: var(--text-muted); }
     .empty-state .icon { font-size: 64px; margin-bottom: 16px; }
 </style>

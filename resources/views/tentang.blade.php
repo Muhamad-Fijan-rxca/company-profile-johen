@@ -48,7 +48,7 @@
 </div>
 
 {{-- TENTANG PERUSAHAAN --}}
-<section class="section" style="background:white">
+<section class="section" style="background:var(--bg)">
     <div class="container">
         <div class="about-grid">
             <div class="about-img reveal">
@@ -111,7 +111,7 @@
 </section>
 
 {{-- KEUNGGULAN --}}
-<section class="section" style="background:white">
+<section class="section" style="background:var(--white)">
     <div class="container">
         <div class="section-header reveal">
             <span class="section-tag">Keunggulan</span>

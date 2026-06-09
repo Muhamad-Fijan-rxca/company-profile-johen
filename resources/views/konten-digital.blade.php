@@ -4,7 +4,7 @@
 @push('styles')
 <style>
     /* TAB FILTER */
-    .tab-wrap { display: flex; gap: 0; background: white; border-radius: 14px; padding: 6px; box-shadow: var(--shadow-md); display: inline-flex; margin-bottom: 48px; }
+    .tab-wrap { display: flex; gap: 0; background: var(--white); border-radius: 14px; padding: 6px; box-shadow: var(--shadow-md); display: inline-flex; margin-bottom: 48px; }
     .tab-btn {
         padding: 12px 28px; border-radius: 10px; border: none; cursor: pointer;
         font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600;
@@ -12,7 +12,7 @@
         transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         display: flex; align-items: center; gap: 8px;
     }
-    .tab-btn.active { background: var(--gradient); color: white; box-shadow: 0 4px 16px rgba(26,63,168,0.3); }
+    .tab-btn.active { background: var(--gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
     .tab-btn:hover:not(.active) { color: var(--primary); background: var(--primary-light); }
 
     /* KONTEN SECTION */

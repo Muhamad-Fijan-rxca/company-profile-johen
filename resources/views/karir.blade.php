@@ -11,7 +11,7 @@
     .lowongan-action { flex-shrink: 0; }
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
     .modal-overlay.open { display: flex; }
-    .modal { background: white; border-radius: var(--radius); padding: 40px; max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal { background: var(--white); border-radius: var(--radius); padding: 40px; max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
     .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); padding: 8px; border-radius: 8px; }
     .modal-close:hover { background: var(--bg); }
     .modal h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }

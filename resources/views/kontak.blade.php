@@ -5,7 +5,7 @@
 <style>
     .kontak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
     .info-item { display: flex; gap: 16px; margin-bottom: 24px; }
-    .info-icon { width: 48px; height: 48px; background: var(--gradient-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 18px; flex-shrink: 0; }
+    .info-icon { width: 48px; height: 48px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 18px; flex-shrink: 0; }
     .info-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
     .info-item p { font-size: 14px; color: var(--text-muted); }
     .map-wrap { border-radius: var(--radius); overflow: hidden; margin-top: 24px; }
@@ -25,7 +25,7 @@
 </div>
 
 {{-- BAGIAN 1: CONTACT PT --}}
-<section class="section" style="background:white">
+<section class="section" style="background:var(--bg)">
     <div class="container">
         <div class="section-header reveal">
             <span class="section-tag">Informasi Perusahaan</span>
@@ -93,12 +93,12 @@
             <div class="card" style="padding:40px">
 
                 {{-- INFO CS --}}
-                <div style="display:flex;gap:16px;background:var(--primary-light);border:1px solid rgba(26,63,168,0.15);border-radius:12px;padding:16px 20px;margin-bottom:28px;align-items:flex-start">
+                <div style="display:flex;gap:16px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);border-radius:12px;padding:16px 20px;margin-bottom:28px;align-items:flex-start">
                     <div style="width:40px;height:40px;background:var(--gradient);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
                         <i class="fas fa-headset" style="color:white;font-size:16px"></i>
                     </div>
                     <div>
-                        <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px">Customer Service Johen Gaming</div>
+                        <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px">Customer Service Johen Gaming</div>
                         <div style="font-size:13px;color:var(--text-muted);line-height:1.6">
                             <i class="fas fa-envelope" style="width:16px"></i> cs@johengaming.store &nbsp;·&nbsp;
                             <i class="fab fa-whatsapp" style="width:16px;color:#25d366"></i> 0822-6070-7012
