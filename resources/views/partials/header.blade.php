@@ -69,7 +69,8 @@
         position: relative;
         top: -3px;
     }
-    .nav-dropdown:hover .dropdown-arrow {
+    .nav-dropdown:hover .dropdown-arrow,
+    .nav-dropdown.open .dropdown-arrow {
         transform: rotate(-135deg);
         border-right-color: #7035CC;
         border-bottom-color: #0668C0;
@@ -262,7 +263,7 @@
             background: rgba(1,32,60,0.97);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             flex-direction: column; align-items: stretch;
-            padding: 16px 16px 24px; gap: 4px;
+            padding: 16px 16px 24px; gap: 2px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             box-shadow: 0 16px 40px rgba(0,0,0,0.3);
             margin-left: 0;
@@ -270,52 +271,61 @@
         .nav-menu.open { display: flex; }
         .nav-menu li { animation: none; }
         .nav-menu li a {
-            border-radius: 12px; padding: 14px 18px;
-            color: rgba(255,255,255,0.85) !important;
-            font-size: 15px; font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 12px 22px;
+            font-size: 16px; font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            border-radius: 100px;
+            border-bottom: none;
         }
-        .nav-menu li:not(.nav-cta) a::after { display: none; }
-        .nav-menu li:last-child a { border-bottom: none; }
+        .nav-menu li:not(.nav-cta) a::after { display: block; }
         .nav-menu li:not(.nav-cta) a:hover,
         .nav-menu li:not(.nav-cta) a.active {
-            background: rgba(6,104,192,0.1) !important;
-            color: #0668C0 !important;
+            background: linear-gradient(90deg, #0668C0, #7035CC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+        .nav-menu li:last-child a { border-bottom: none; }
         .submenu {
-            position: static; opacity: 1; visibility: visible; transform: none;
-            box-shadow: none; background: transparent; backdrop-filter: none;
-            -webkit-backdrop-filter: none; border: none; padding: 0 0 0 16px; margin-top: 2px;
-            min-width: auto; border-radius: 0;
+            position: static;
+            opacity: 0; visibility: hidden; transform: none;
+            max-height: 0; overflow: hidden;
+            transition: opacity 0.25s ease, max-height 0.35s ease;
+            background: rgba(4,22,64,0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 0 8px;
+            margin: 4px 0 0 0;
+            min-width: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .submenu li a { font-size: 14px; padding: 10px 16px; }
+        .submenu.open {
+            opacity: 1; visibility: visible;
+            max-height: 300px;
+            padding: 8px;
+        }
+        .submenu li a {
+            font-size: 14px; padding: 10px 16px;
+            color: rgba(255,255,255,0.75);
+            border-bottom: none;
+        }
+        .submenu li a:hover,
+        .submenu li a.active {
+            background: linear-gradient(90deg, #0668C0, #7035CC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .nav-menu li.nav-cta { margin-top: 8px; }
-        .nav-menu li.nav-cta a {
-            background: linear-gradient(90deg, #0668C0, #7035CC) !important;
-            border-radius: 100px !important;
-            border-bottom: none !important;
-            box-shadow: 0 4px 16px rgba(112,53,204,0.4);
-            padding: 9px 20px 9px 34px !important;
-            transition: none !important;
-        }
-        .nav-menu li.nav-cta a:hover,
-        .nav-menu li.nav-cta a.active {
-            background: linear-gradient(90deg, #7035CC, #0668C0) !important;
-            color: white !important;
-            padding: 9px 20px 9px 34px !important;
-            box-shadow: 0 4px 16px rgba(112,53,204,0.4);
-        }
-        .nav-menu li.nav-cta a:hover .cta-icon,
-        .nav-menu li.nav-cta a.active .cta-icon {
-            left: 5px !important;
-        }
         .nav-menu li.nav-cta a .cta-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
         }
         .nav-menu li.nav-cta a .cta-img {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
         }
     }
 </style>
@@ -330,7 +340,7 @@
             <li><a href="{{ route('home') }}"   class="{{ request()->routeIs('home')    ? 'active' : '' }}">Beranda</a></li>
             <li><a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'active' : '' }}">Tentang</a></li>
             <li class="nav-dropdown">
-                <a href="#" class="{{ request()->routeIs('produk*') ? 'active' : '' }}" onclick="return false;">Produk <span class="dropdown-arrow"></span></a>
+                <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk*') ? 'active' : '' }}">Produk <span class="dropdown-arrow"></span></a>
                 <ul class="submenu">
                     <li><a href="{{ route('produk.top-up') }}" class="{{ request()->routeIs('produk.top-up') ? 'active' : '' }}">Topup Game</a></li>
                     <li><a href="{{ route('produk.joki-ml') }}" class="{{ request()->routeIs('produk.joki-ml') ? 'active' : '' }}">Joki Mobile Legend</a></li>
@@ -339,9 +349,9 @@
                 </ul>
             </li>
             <li><a href="{{ route('berita') }}"  class="{{ request()->routeIs('berita*') ? 'active' : '' }}">Berita</a></li>
-            <li><a href="{{ route('konten-digital') }}" class="{{ request()->routeIs('konten-digital') ? 'active' : '' }}">Konten Digital</a></li>
+            <li><a href="{{ route('konten-digital') }}" class="{{ request()->routeIs('konten-digital') ? 'active' : '' }}">Partner</a></li>
             <li><a href="{{ route('karir') }}"   class="{{ request()->routeIs('karir')   ? 'active' : '' }}">Karir</a></li>
-            <li class="nav-cta"><a href="{{ route('kontak') }}"><span class="cta-icon"><img src="{{ asset('img/icon/telpon.png') }}" alt="Phone" class="cta-img"></span> Hubungi Kami</a></li>
+            <li class="nav-cta"><a href="https://wa.me/62812347070" target="_blank" rel="noopener"><span class="cta-icon"><img src="{{ asset('img/icon/telpon.png') }}" alt="Phone" class="cta-img"></span> Hubungi Kami</a></li>
         </ul>
 
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -362,12 +372,28 @@
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
         navMenu.classList.toggle('open');
+        document.querySelector('.submenu')?.classList.remove('open');
+        document.querySelector('.nav-dropdown')?.classList.remove('open');
     });
 
-    navMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navMenu.classList.remove('open');
-        });
+    navMenu.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const isMobile = window.innerWidth <= 1024;
+
+        if (isMobile && link.closest('.nav-dropdown') && !link.closest('.submenu')) {
+            e.preventDefault();
+            e.stopPropagation();
+            const sub = link.nextElementSibling;
+            sub?.classList.toggle('open');
+            link.closest('.nav-dropdown')?.classList.toggle('open');
+            return;
+        }
+
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+        document.querySelector('.submenu')?.classList.remove('open');
+        document.querySelector('.nav-dropdown')?.classList.remove('open');
     });
 </script>

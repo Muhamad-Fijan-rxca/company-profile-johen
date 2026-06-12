@@ -93,7 +93,7 @@
     }
     .hero-content h1 .highlight,
     .hero-content h1 .accent {
-        background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed);
+        background: linear-gradient(90deg, #0987F5, #854DEA, #854DEA);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -283,18 +283,13 @@
         pointer-events: none;
     }
     .tentang-teks h2 {
-        font-size: clamp(28px, 3vw, 38px);
+        font-size: clamp(22px, 2.5vw, 30px);
         font-weight: 900;
         line-height: 1.2; margin-bottom: 24px;
-        white-space: nowrap;
-        background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed);
+        background: linear-gradient(90deg, #0987F5, #854DEA, #854DEA);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-    }
-    .tentang-teks p {
-        font-size: 17px; color: rgba(255,255,255,0.75);
-        line-height: 1.9; margin-bottom: 36px;
         max-width: 560px;
     }
     .tentang-teks .btn-tentang {
@@ -341,7 +336,7 @@
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
     .why-heading { margin: 0; }
     .why-heading h2 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; color: white; margin: 0 0 12px; line-height: 1.2; }
-    .why-heading .why-accent { font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; margin-bottom: 16px; display: block; background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .why-heading .why-accent { font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; margin-bottom: 16px; display: block; background: linear-gradient(90deg, #0987F5, #854DEA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .why-heading p { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 420px; margin: 0; }
     .why-accordion { display: flex; flex-direction: column; gap: 33px; }
     .why-accordion details {
@@ -373,6 +368,7 @@
     }
     @media (max-width: 900px) {
         .why-grid { grid-template-columns: 1fr; gap: 40px; }
+        .why-section { padding: 80px 0; }
     }
 
     /* ── PRODUK UNGGULAN ── */
@@ -413,7 +409,10 @@
     .produk-card h3 { font-size: 18px; font-weight: 700; color: white; margin: 0 0 10px; }
     .produk-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0 0 24px; flex: 1; border-bottom: 1px solid rgba(0,212,255,0.1); padding-bottom: 24px; }
     .produk-card .p-price-label { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
-    .produk-card .p-price { font-size: 32px; font-weight: 500; margin-bottom: 20px; font-family: 'Poppins', sans-serif; background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .produk-card .p-price { font-size: 32px; font-weight: 500; margin-bottom: 20px; font-family: 'Poppins', sans-serif;         background: linear-gradient(90deg, #0987F5, #854DEA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; }
     .produk-card .p-btn {
         position: relative;
         display: inline-flex; align-items: center;
@@ -656,7 +655,7 @@
                 PT. Johen Sukses Abadi (JOHEN GAMING) — Solusi lengkap untuk jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming. Proses cepat, aman, dan transparan.
             </p>
             <div class="hero-actions">
-                <a href="{{ route('kontak') }}" class="btn btn-accent btn-lg">
+                <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
                     <i class="fas fa-headset"></i> Konsultasi Sekarang
                 </a>
                 <a href="{{ route('produk') }}" class="btn btn-hero-outline">
@@ -729,7 +728,7 @@
                     <div class="why-body">Setiap pesanan diproses secara otomatis dalam hitungan menit dengan status real-time yang bisa Anda pantau langsung.</div>
                 </details>
                 <details>
-                    <summary><span class="check"><img src="{{ asset('img/icon/centang.png') }}" alt="✔" style="width:20px;height:20px;display:block"></span> Customer Support Resepsionif <span class="chevron">∨</span></summary>
+                    <summary><span class="check"><img src="{{ asset('img/icon/centang.png') }}" alt="✔" style="width:20px;height:20px;display:block"></span> Customer Support Responsif <span class="chevron">∨</span></summary>
                     <div class="why-body">Tim customer support kami siap membantu Anda 24/7 melalui WhatsApp, email, dan live chat dengan respon cepat dan ramah.</div>
                 </details>
             </div>

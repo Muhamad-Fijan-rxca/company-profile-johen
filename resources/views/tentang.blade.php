@@ -8,7 +8,7 @@
         min-height: 55vh;
         display: flex; align-items: center; justify-content: center;
         position: relative; overflow: hidden;
-        background: linear-gradient(160deg, #01203c 0%, #052a48 50%, #0a3050 100%);
+        background: #020D2E;
         padding: 110px 24px 80px;
     }
     .about-hero-bg {
@@ -116,7 +116,7 @@
 
     /* ── TIMELINE ── */
     .timeline-section {
-        background: #0A0F2C;
+        background: #020D2E;
         padding: 80px 0 120px;
         position: relative;
     }
@@ -275,7 +275,7 @@
 
     /* ── VISI & MISI ── */
     .vm-section {
-        background: #0A0F2C;
+        background: #041640;
         padding: 80px 0 120px;
         position: relative;
     }
@@ -298,18 +298,24 @@
     .vm-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 32px;
-        max-width: 900px;
+        gap: 48px;
+        max-width: 1400px;
         margin: 0 auto;
     }
     .vm-card {
         position: relative;
-        background: #0D1B3E;
+        background: #0A1E50;
         border: 1px solid rgba(30, 58, 138, 0.4);
-        border-radius: 16px;
-        padding: 36px 28px 28px;
+        border-radius: 20px;
+        padding: 52px 44px 44px;
         overflow: visible;
         margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+    .vm-body {
+        flex: 1;
+        color: white;
     }
     .vm-tab {
         position: absolute;
@@ -332,29 +338,28 @@
         background: #6D28D9;
         clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%);
     }
-    .vm-body { color: white; }
     .vm-body p {
-        font-size: 14px;
-        line-height: 1.7;
+        font-size: 16px;
+        line-height: 1.6;
         color: rgba(255,255,255,0.8);
         margin: 0;
     }
     .vm-body ol {
         margin: 0;
-        padding-left: 20px;
+        padding-left: 24px;
         list-style-position: outside;
     }
     .vm-body ol li {
-        font-size: 14px;
-        line-height: 1.7;
+        font-size: 16px;
+        line-height: 1.6;
         color: rgba(255,255,255,0.8);
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
     .vm-body ol li:last-child { margin-bottom: 0; }
 
     /* ── KENAPA MEMILIH KAMI ── */
     .why-section {
-        background: #0A0F2C;
+        background: #020D2E;
         padding: 80px 0 120px;
         position: relative;
     }
@@ -364,7 +369,7 @@
     }
     .why-header h2 {
         font-size: clamp(26px, 3.2vw, 38px);
-        font-weight: 800;
+        font-weight: 700;
         color: white;
         margin-bottom: 12px;
         line-height: 1.3;
@@ -373,20 +378,23 @@
         color: white;
     }
     .why-header .why-highlight {
-        color: #818CF8;
+        background: linear-gradient(90deg, #0987F5, #854DEA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
     .why-header p {
         font-size: 15px;
         color: rgba(255,255,255,0.5);
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
     }
 
     .why-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        max-width: 800px;
+        gap: 35px;
+        max-width: 900px;
         margin: 0 auto;
     }
 
@@ -394,48 +402,47 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        padding: 18px 24px;
-        border-radius: 100px;
-        background: linear-gradient(135deg, #1E3A8A, #6D28D9);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 22px 30px;
+        border-radius: 14px;
+        background: linear-gradient(145deg, rgba(133,77,234,0.75), #005096);
+        box-shadow:
+            inset 0 3px 8px rgba(0,0,0,0.5),
+            inset 0 12px 28px rgba(0,0,0,0.25);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .why-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        transform: translateY(-4px);
+        box-shadow:
+            inset 0 3px 10px rgba(0,0,0,0.55),
+            inset 0 16px 36px rgba(0,0,0,0.3);
     }
 
     .why-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: 2px solid white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 15px;
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
         flex-shrink: 0;
     }
 
     .why-label {
         color: white;
-        font-weight: 700;
-        font-size: 15px;
+        font-weight: 400;
+        font-size: 17px;
         white-space: nowrap;
     }
 
     /* ── KANTOR PUSAT ── */
     .kantor-section {
-        background: #0A1628;
+        background: #041640;
         padding: 80px 0 120px;
         position: relative;
     }
 
     .kantor-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 48px;
-        max-width: 1000px;
+        grid-template-columns: 2fr 2fr;
+        gap: 95px;
+        max-width: 1100px;
         margin: 0 auto;
         align-items: start;
     }
@@ -458,7 +465,8 @@
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 8.5;
+        margin-top: 28px;
     }
     .kantor-map iframe {
         width: 100%;
@@ -494,22 +502,25 @@
     .kantor-right {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+    }
+    .kantor-right > * + * {
+        margin-top: 30px;
+    }
+    .kantor-alamat {
+        margin-bottom: 16px;
     }
 
     .kantor-alamat {
         display: flex;
         align-items: flex-start;
         gap: 16px;
-        background: #6D28D9;
+        background: linear-gradient(135deg, rgba(9, 135, 245, 0.3), rgba(133, 77, 234, 0.3));
         border-radius: 16px;
         padding: 20px 24px;
     }
     .kantor-alamat-icon {
         width: 42px;
         height: 42px;
-        border-radius: 10px;
-        background: rgba(255,255,255,0.15);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -531,21 +542,37 @@
         align-items: center;
         gap: 16px;
         background: rgba(13,27,62,0.7);
-        border: 1px solid #1E40AF;
+        border: 2px solid #004786;
         border-radius: 14px;
         padding: 16px 20px;
     }
+    .kantor-contact + .kantor-contact {
+        margin-top: 20px;
+    }
     .kantor-contact-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        background: #1D4ED8;
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: #00325F;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
         font-size: 18px;
         color: white;
+    }
+    .kantor-contact-icon::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
+        padding: 1.5px;
+        background: linear-gradient(135deg, #0987F5, #854DEA);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
     .kantor-contact span {
         color: white;
@@ -555,7 +582,7 @@
 
     /* ── KIRIM PESAN KE CS ── */
     .cs-section {
-        background: #070E1C;
+        background: #020D2E;
         padding: 80px 0 120px;
         position: relative;
     }
@@ -580,9 +607,9 @@
         max-width: 680px;
         margin: 0 auto;
         background: #0D1B3E;
-        border: 1px solid #1E40AF;
+        border: 2px solid #004786;
         border-radius: 20px;
-        padding: 36px 32px;
+        padding: 42px 38px;
     }
 
     /* Info bar CS */
@@ -590,21 +617,46 @@
         display: flex;
         align-items: flex-start;
         gap: 16px;
-        background: rgba(7,18,42,0.8);
-        border: 1px solid #1E40AF;
+        background: #0A1E50;
         border-radius: 12px;
         padding: 16px 20px;
         margin-bottom: 28px;
+        position: relative;
+    }
+    .cs-info::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        padding: 2px;
+        background: linear-gradient(135deg, rgba(9, 135, 245, 0.6), rgba(133, 77, 234, 0.6));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
     .cs-info-icon {
-        width: 40px;
-        height: 40px;
-        background: #1D4ED8;
-        border-radius: 10px;
+        position: relative;
+        width: 44px;
+        height: 44px;
+        background: #00325F;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+    }
+    .cs-info-icon::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
+        padding: 1.5px;
+        background: linear-gradient(135deg, #0987F5, #854DEA);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
     .cs-info-icon svg {
         width: 20px;
@@ -641,7 +693,7 @@
         gap: 16px;
     }
     .cs-row {
-        margin-top: 16px;
+        margin-top: 26px;
     }
     .cs-field {
         display: flex;
@@ -656,7 +708,7 @@
     .cs-field input,
     .cs-field textarea {
         background: #07122A;
-        border: 1px solid #1E40AF;
+        border: 2px solid #004786;
         border-radius: 10px;
         padding: 12px 16px;
         color: white;
@@ -904,27 +956,27 @@
         </div>
         <div class="why-grid">
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Sistem Kerja Terstruktur</span>
             </div>
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Tim Berpengalaman</span>
             </div>
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Standar Keamanan Akun Terbaik</span>
             </div>
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Kantor Operasional Fisik</span>
             </div>
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Pelayanan Cepat dan Responsif</span>
             </div>
             <div class="why-card">
-                <span class="why-icon">✔</span>
+                <img src="{{ asset('img/icon/centang.png') }}" class="why-icon" alt="">
                 <span class="why-label">Fokus Kepuasan Pelanggan</span>
             </div>
         </div>
@@ -939,8 +991,8 @@
                 <h2>Kantor Pusat</h2>
                 <p>Kunjungi kantor operasional kami di Summarecon Bandung atau melalui kontak dibawah ini</p>
                 <div class="kantor-map">
-                    <iframe src="https://www.google.com/maps?q=Summarecon+Bandung+Ruko+Topaz+No60&output=embed" allowfullscreen loading="lazy"></iframe>
-                    <a href="https://www.google.com/maps?q=Summarecon+Bandung+Ruko+Topaz+No60" target="_blank" class="kantor-fullscreen" aria-label="Buka peta">
+                    <iframe src="https://www.google.com/maps?q=Johen+Gaming&output=embed&z=17" allowfullscreen loading="lazy"></iframe>
+                    <a href="https://www.google.com/maps/place/Johen+Gaming/@-6.9595319,107.6964795,17z" target="_blank" class="kantor-fullscreen" aria-label="Buka peta">
                         <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                     </a>
                 </div>
@@ -948,22 +1000,22 @@
             <div class="kantor-right">
                 <div class="kantor-alamat">
                     <div class="kantor-alamat-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <img src="{{ asset('img/icon/bangunan.png') }}" alt="Bangunan" style="width: 34px; height: 34px;">
                     </div>
                     <div class="kantor-alamat-text">
                         Ruko Topaz Summarecon Bandung No.60, Cisaranten Kidul, Kec. Gedebage, Kota Bandung, Jawa Barat 40295
                     </div>
                 </div>
                 <div class="kantor-contact">
-                    <div class="kantor-contact-icon">✉</div>
+                    <div class="kantor-contact-icon"><img src="{{ asset('img/icon/pesan.png') }}" alt="Pesan" style="width: 26px; height: 26px;"></div>
                     <span>corporate@johengaming.store</span>
                 </div>
                 <div class="kantor-contact">
-                    <div class="kantor-contact-icon">📞</div>
+                    <div class="kantor-contact-icon"><img src="{{ asset('img/icon/wablue.png') }}" alt="WhatsApp" style="width: 26px; height: 26px;"></div>
                     <span>0812-3470-7070</span>
                 </div>
                 <div class="kantor-contact">
-                    <div class="kantor-contact-icon">🕐</div>
+                    <div class="kantor-contact-icon"><img src="{{ asset('img/icon/cs.png') }}" alt="CS" style="width: 26px; height: 26px;"></div>
                     <span>cs@johengaming.store</span>
                 </div>
             </div>
@@ -981,9 +1033,9 @@
         <div class="cs-card">
             {{-- Info bar CS --}}
             <div class="cs-info">
-                <div class="cs-info-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/></svg>
-                </div>
+                    <div class="cs-info-icon">
+                        <img src="{{ asset('img/icon/cs.png') }}" alt="CS" style="width: 26px; height: 26px;">
+                    </div>
                 <div class="cs-info-body">
                     <div class="cs-info-name">Customer Service Johen Gaming</div>
                     <div class="cs-info-contact">

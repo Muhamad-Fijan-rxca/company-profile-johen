@@ -15,6 +15,7 @@ class ProdukController extends Controller
         }
         $produk = $query->get();
         $kategoriList = Produk::aktif()->where('kategori', '!=', 'Konten Digital')->distinct()->pluck('kategori');
+
         return view('produk', compact('produk', 'kategoriList', 'kategori'));
     }
 
@@ -22,27 +23,31 @@ class ProdukController extends Controller
     {
         $kategori = 'Top Up';
         $produk = Produk::aktif()->where('kategori', $kategori)->orderBy('urutan')->get();
-        return view('produk-kategori', compact('produk', 'kategori'));
+
+        return view('produk.top-up', compact('produk', 'kategori'));
     }
 
     public function jokiMl()
     {
         $kategori = 'Jasa Joki';
         $produk = Produk::aktif()->where('kategori', $kategori)->orderBy('urutan')->get();
-        return view('produk-kategori', compact('produk', 'kategori'));
+
+        return view('produk.joki-ml', compact('produk', 'kategori'));
     }
 
     public function jualBeliAkun()
     {
         $kategori = 'Jual Beli Akun';
         $produk = Produk::aktif()->where('kategori', $kategori)->orderBy('urutan')->get();
-        return view('produk-kategori', compact('produk', 'kategori'));
+
+        return view('produk.jual-beli-akun', compact('produk', 'kategori'));
     }
 
     public function liveCommerce()
     {
         $kategori = 'Live Commerce';
         $produk = Produk::aktif()->where('kategori', $kategori)->orderBy('urutan')->get();
-        return view('produk-kategori', compact('produk', 'kategori'));
+
+        return view('produk.live-commerce', compact('produk', 'kategori'));
     }
 }

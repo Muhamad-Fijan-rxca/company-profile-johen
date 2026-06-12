@@ -8,14 +8,15 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Berita::aktif()->latest()->paginate(6);
+        $berita = Berita::aktif()->latest()->paginate(12);
         return view('berita.index', compact('berita'));
     }
 
     public function show(string $slug)
     {
         $berita = Berita::aktif()->where('slug', $slug)->firstOrFail();
-        $lainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(3)->get();
-        return view('berita.show', compact('berita', 'lainnya'));
+        $lainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(4)->get();
+        $beritaLainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(8)->get();
+        return view('berita.show', compact('berita', 'lainnya', 'beritaLainnya'));
     }
 }

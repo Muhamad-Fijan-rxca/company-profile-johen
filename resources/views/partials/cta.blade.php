@@ -127,7 +127,7 @@
         <div class="container">
             <h2>Siap Meningkatkan Pengalaman Gaming-mu?</h2>
             <p>Top up lebih cepat, joki lebih aman, dan jual beli akun dengan proses transparan serta terpercaya.</p>
-            <a href="{{ route('kontak') }}" class="btn-hubungi">
+            <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn-hubungi">
                 <span class="btn-icon-wrap"><img src="{{ asset('img/icon/telpon.png') }}" alt="Phone"></span>
                 Hubungi Kami
             </a>

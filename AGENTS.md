@@ -3,48 +3,52 @@
 ## Stack
 
 Laravel 13 + Blade + Tailwind CSS 4 (`@tailwindcss/vite`) + Vite.
-PHP ^8.3, SQLite (dev & test). Konten Indonesia (tidak ada `lang/`).
+PHP ^8.3, SQLite (dev & test). Konten Indonesia — **jangan** gunakan `__()`/`trans()`, hardcode teks di Blade.
+Font Awesome 6.5.0 (CDN) di kedua layout.
 
 ## Commands
 
 | Command | Notes |
 |---------|-------|
-| `composer setup` | Install dep, copy `.env`, key:generate, migrate --force, `npm install --ignore-scripts`, `npm run build` |
-| `composer dev` | `php artisan serve` + `queue:listen` + `pail` + Vite concurrently (`--kill-others`, color-coded) |
-| `composer test` | `config:clear` then `php artisan test` |
+| `composer setup` | Install dep, copy `.env`, key:generate, migrate --force, `npm install --ignore-scripts`, `npm run build`. **Tidak** seed atau `storage:link`. |
+| `composer dev` | `php artisan serve` + `queue:listen --tries=1 --timeout=0` + `pail --timeout=0` + Vite via `concurrently` (`--kill-others`, color-coded) |
+| `composer test` | `config:clear` lalu `php artisan test` |
 | `npm run dev` | Vite only |
 | `./vendor/bin/pint` | PSR-12 formatter, no config |
-| `php artisan db:seed` | Run after migrate (admin: `admin@johengaming.com` / `Johen2025!`) |
-| `php artisan storage:link` | Required for CV upload & image visibility |
+| `php artisan db:seed` | Jalankan setelah migrate (admin: `admin@johengaming.com` / `Johen2025!`) |
+| `php artisan storage:link` | Wajib untuk upload CV & visibilitas gambar |
 
 ## Architecture
 
-- **Admin**: prefix `/johen-admin-secret`, name `admin.*`. Bare Laravel auth (no Breeze/Jetstream). Logout **must** be POST + `@csrf`.
-- **14 public routes**: home, tentang, produk index, 4 sub-kategori (`top-up`, `joki-ml`, `jual-beli-akun`, `live-commerce`), berita index+show, karir GET+POST, konten-digital, kontak GET+POST. No API routes.
-- **Layouts**: public = `layouts.app` → `partials.header` + `partials.footer`; admin = `admin.layout`. Both use inline `<style>` + Poppins (Google Fonts).
-- **7 Models**: `User` (only factory), `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`. Scopes: `Aktif()` on 4 content models, `Unggulan()` on Produk & KontenDigital.
-- **Seeder**: hardcoded content. Produk & KontenDigital sorted by `urutan` column.
+- **Admin**: prefix `/johen-admin-secret`, name `admin.*`. Bare Laravel auth (no Breeze/Jetstream). Logout **wajib** POST + `@csrf`.
+- **14 public routes**: home, tentang, produk+4 sub-kategori, berita index+show, karir GET+POST, konten-digital, kontak GET+POST. Tidak ada API routes.
+- **Layouts**: `layouts.app` (public) → `partials.header` + `<main>` + `partials.cta` + `partials.footer`; `admin.layout` (admin). Keduanya pakai `<style>` inline + Poppins (Google Fonts).
+- **7 Models**: `User`, `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`. Scopes: `Aktif()` pada semua model konten; `Unggulan()` pada Produk & KontenDigital.
+- **Berita** pakai `Berita::generateSlug($judul)` (duplicate suffix `-2`, `-3`...).
+- **Seeder**: hardcoded. Produk & KontenDigital diurutkan via kolom `urutan`.
 - **Paginator**: custom `vendor.pagination.simple` (prev/next) via `AppServiceProvider`.
-- **Email**: `emails.notif_kontak` with dormant `jual`/`beli` branches — controller only allows `cs`.
-- **Tailwind v4**: config via `resources/css/app.css` (`@import 'tailwindcss'` + `@source`), no `tailwind.config.js`.
-- **No CI**, no `.github/` workflows.
+- **Email**: `emails.notif_kontak` — controller hanya mengirim `cs`, ada branch `jual`/`beli` di template **jangan diaktifkan**.
+- **Tailwind v4**: konfigurasi di `resources/css/app.css` (`@import 'tailwindcss'` + `@source` directives), tanpa `tailwind.config.js`.
+- **Favicon**: SVG (`favicon.svg`).
+- **Tidak ada CI**, tidak ada `.github/`.
+- **CV upload**: validasi `required|file|mimes:pdf,doc,docx|max:2048`, store `cv/` di `public` disk. Butuh `storage:link`.
 
 ## Gotchas
 
-- **`.npmrc`**: `ignore-scripts=true` — packages with postinstall (esbuild, etc.) need `npm install --ignore-scripts=false <pkg>`.
-- **APP_LOCALE=en** despite Indonesian content — **don't use** `__()`/`trans()`, hardcode text in Blade.
-- **Font mismatch**: `vite.config.js` loads Instrument Sans via Bunny CDN, but Blade layouts load Poppins from Google Fonts. Vite font setup is unused in views.
-- **CV upload**: `$request->file('cv')->store('cv', 'public')` → `storage/app/public/cv/`. Requires `storage:link`.
-- **PesanKontak**: controller validates `tujuan => required|in:cs` only. Migration has `jual`/`beli`/`cs` enum — **don't activate** dormant branches.
-- **Produk index**: filters `where('kategori', '!=', 'Konten Digital')`. 4 sub-kategori methods bypass this with hardcoded categories.
-- **Admin CRUD**: `->except(['show'])` for Produk, Berita, Lowongan, KontenDigital. Pelamar = read-only (index/destroy). Pesan = index/show/destroy.
-- **`storage:link` not in `composer setup`** — must be run manually.
-- **`resources/js/app.js`**: empty, no JS framework.
-- **`backup-desain-lama/` & `screenshot-figma/`**: design assets, not application code.
-- **`PROFIL_PERUSAHAAN.md`**: company profile in Indonesian (vision, mission, structure, contacts).
-- **`.opencode/opencode.json`**: has Figma MCP (`figma-developer-mcp` with API key).
+- **`.npmrc`**: `ignore-scripts=true` — package dengan postinstall (esbuild, dll.) perlu `npm install --ignore-scripts=false <pkg>`.
+- **`.env` non-default drivers**: `SESSION_DRIVER=database`, `QUEUE_CONNECTION=database`, `CACHE_STORE=database` — semuanya butuh migration.
+- **`APP_LOCALE=en`** di `config/app.php` — jangan pakai `__()`/`trans()`, hardcode teks di Blade.
+- **Font mismatch**: `vite.config.js` load Instrument Sans via Bunny CDN, tapi Blade layout pakai Poppins dari Google Fonts. Konfigurasi font Vite tidak terpakai.
+- **PesanKontak**: controller validate `tujuan => required|in:cs` saja. Migration punya enum `jual`/`beli`/`cs` — **jangan aktifkan** branch dormant.
+- **Produk index**: filter `where('kategori', '!=', 'Konten Digital')`. 4 method sub-kategori bypass filter ini dengan kategori hardcoded.
+- **Admin CRUD**: `->except(['show'])` untuk Produk, Berita, Lowongan, KontenDigital. Pelamar = read-only (index/destroy). Pesan = index/show/destroy.
+- **`storage:link` tidak ada di `composer setup`** — harus manual.
+- **`resources/js/app.js`**: kosong (`//`), tidak ada JS framework.
+- **`backup-desain-lama/` & `screenshot-figma/`**: aset desain, bukan kode aplikasi.
+- **`PROFIL_PERUSAHAAN.md`**: company profile Bahasa Indonesia (visi, misi, struktur, kontak).
+- **`.opencode/opencode.json`**: konfigurasi lokal OpenCode — Figma MCP dengan API key. Direktori ini di-gitignore.
 
 ## Testing
 
 - `phpunit.xml`: `APP_ENV=testing`, SQLite `:memory:`, array cache/mail/session, sync queue.
-- 3 files: `TestCase` (base), `Unit/ExampleTest`, `Feature/ExampleTest`. Feature tests use `RefreshDatabase`.
+- Feature tests pakai `RefreshDatabase`. Hanya ada 2 test file contoh (`Unit/ExampleTest`, `Feature/ExampleTest`).
