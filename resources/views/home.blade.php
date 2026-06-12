@@ -373,12 +373,12 @@
 
     /* ── PRODUK UNGGULAN ── */
     .produk-section { background: #020D2E; }
-    .produk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .produk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
     .produk-card {
         background: #0A1E50;
         border: 1px solid rgba(0,212,255,0.12);
-        border-radius: 20px;
-        padding: 40px 28px 36px;
+        border-radius: 22px;
+        padding: 44px 30px 38px;
         display: flex; flex-direction: column;
         transition: border-color 0.3s, transform 0.3s;
     }
@@ -388,12 +388,12 @@
     }
     .produk-card .p-icon {
         position: relative;
-        width: 52px; height: 52px;
+        width: 56px; height: 56px;
         border-radius: 50%;
         background: transparent;
         display: flex; align-items: center; justify-content: center;
-        font-size: 22px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin-bottom: 22px;
     }
     .produk-card .p-icon::before {
         content: '';
@@ -406,20 +406,15 @@
         mask-composite: exclude;
         pointer-events: none;
     }
-    .produk-card h3 { font-size: 18px; font-weight: 700; color: white; margin: 0 0 10px; }
-    .produk-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0 0 24px; flex: 1; border-bottom: 1px solid rgba(0,212,255,0.1); padding-bottom: 24px; }
-    .produk-card .p-price-label { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
-    .produk-card .p-price { font-size: 32px; font-weight: 500; margin-bottom: 20px; font-family: 'Poppins', sans-serif;         background: linear-gradient(90deg, #0987F5, #854DEA);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text; }
+    .produk-card h3 { font-size: 19px; font-weight: 700; color: white; margin: 0 0 11px; }
+    .produk-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin: 0 0 26px; flex: 1; border-bottom: 1px solid rgba(0,212,255,0.1); padding-bottom: 26px; }
     .produk-card .p-btn {
         position: relative;
         display: inline-flex; align-items: center;
-        padding: 10px 24px 10px 46px;
+        padding: 9px 22px 9px 44px;
         border: 1px solid rgba(6,104,192,0.15);
         border-radius: 100px;
-        font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+        font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600;
         color: white;
         text-decoration: none;
         background: linear-gradient(90deg, #0668C0, #7035CC, #7035CC, #0668C0);
@@ -432,22 +427,22 @@
                     background-position 0.5s ease;
     }
     .produk-card .p-btn:hover {
-        padding: 10px 46px 10px 24px;
+        padding: 9px 44px 9px 22px;
         background-position: 100% 0%;
     }
     .produk-card .p-btn .p-btn-icon {
         position: absolute;
-        top: 50%; left: 5px;
+        top: 50%; left: 4px;
         transform: translateY(-50%) rotate(0deg);
-        width: 28px; height: 28px; border-radius: 50%;
+        width: 26px; height: 26px; border-radius: 50%;
         background: white;
         display: flex; align-items: center; justify-content: center;
-        font-size: 13px; color: #7035CC;
+        font-size: 12px; color: #7035CC;
         transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .produk-card .p-btn:hover .p-btn-icon {
-        left: calc(100% - 33px);
+        left: calc(100% - 30px);
         transform: translateY(-50%) rotate(45deg);
     }
     @media (max-width: 1100px) { .produk-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -458,6 +453,9 @@
     .berita-section { background: #041640; }
     .berita-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .berita-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
         border-radius: 16px;
         overflow: hidden;
         position: relative;
@@ -748,9 +746,7 @@
                 <div class="p-icon"><img src="{{ asset('img/icon/wallet.png') }}" alt="Top Up" style="width:26px;height:26px;object-fit:contain;"></div>
                 <h3>Top Up Games</h3>
                 <p>Top Up diamond, UC, dan mata uang game lainnya dengan harga terbaik</p>
-                <div class="p-price-label">Mulai dari</div>
-                <div class="p-price">Rp 5.000</div>
-                <a href="{{ route('produk') }}" class="p-btn">
+                <a href="{{ route('produk.top-up') }}" class="p-btn">
                     <span class="p-btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                     Lihat Selengkapnya
                 </a>
@@ -759,8 +755,6 @@
                 <div class="p-icon"><img src="{{ asset('img/icon/gamepad.png') }}" alt="Joki" style="width:26px;height:26px;object-fit:contain;"></div>
                 <h3>Joki Mobile Legends</h3>
                 <p>Tingkatkan rank, selesaikan misi dan capai target gaming anda</p>
-                <div class="p-price-label">Mulai dari</div>
-                <div class="p-price">Rp 10.000</div>
                 <a href="{{ route('produk.joki-ml') }}" class="p-btn">
                     <span class="p-btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                     Lihat Selengkapnya
@@ -770,8 +764,6 @@
                 <div class="p-icon"><img src="{{ asset('img/icon/tasicon.png') }}" alt="Jual Beli" style="width:26px;height:26px;object-fit:contain;"></div>
                 <h3>Jual Beli Akun Games</h3>
                 <p>Marketplace akun game berkualitas dengan harga terbaik dan aman</p>
-                <div class="p-price-label">Mulai dari</div>
-                <div class="p-price">Rp 100.000</div>
                 <a href="{{ route('produk.jual-beli-akun') }}" class="p-btn">
                     <span class="p-btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                     Lihat Selengkapnya
@@ -781,8 +773,6 @@
                 <div class="p-icon"><img src="{{ asset('img/icon/camvid.png') }}" alt="Live Commerce" style="width:26px;height:26px;object-fit:contain;"></div>
                 <h3>Live Commerce</h3>
                 <p>Saksikan live streaming kami dan dapatkan penawaran terbaik</p>
-                <div class="p-price-label">Mulai dari</div>
-                <div class="p-price">Rp 10.000</div>
                 <a href="{{ route('produk.live-commerce') }}" class="p-btn">
                     <span class="p-btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                     Lihat Selengkapnya
@@ -800,7 +790,7 @@
             <p class="section-subtitle">Informasi terkini seputar dunia gaming dan update dari Johen Gaming.</p>
         </div>
         <div class="berita-grid">
-            <div class="berita-card">
+            <a href="{{ route('berita.show', 'pt-johen-sukses-abadi-resmi-berdiri-solusi-digital-gaming-commerce-terpercaya') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg1.jpeg') }}" alt="PT Johen Sukses Abadi Resmi Berdiri">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -810,8 +800,8 @@
                     <div class="berita-date">📅 18 Mei 2025</div>
                 </div>
                 <div class="berita-desc">Perusahaan digital gaming commerce resmi hadir sebagai solusi terpercaya di Indonesia.</div>
-            </div>
-            <div class="berita-card">
+            </a>
+            <a href="{{ route('berita.show', 'tips-aman-jual-beli-akun-game-dari-johen-gaming') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg2.jpeg') }}" alt="Tips Aman Jual Beli Akun Game">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -821,8 +811,8 @@
                     <div class="berita-date">📅 20 Mei 2025</div>
                 </div>
                 <div class="berita-desc">Panduan bertransaksi akun game dengan aman dari tim Johen Gaming.</div>
-            </div>
-            <div class="berita-card">
+            </a>
+            <a href="{{ route('berita.show', 'johen-gaming-kini-hadir-dengan-live-commerce-untuk-pengalaman-belanja-lebih-interaktif') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg1.jpeg') }}" alt="Live Commerce Hadir">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -832,8 +822,8 @@
                     <div class="berita-date">📅 22 Mei 2025</div>
                 </div>
                 <div class="berita-desc">Pengalaman belanja lebih interaktif melalui live streaming gaming.</div>
-            </div>
-            <div class="berita-card">
+            </a>
+            <a href="{{ route('berita.show', 'lowongan-kerja-johen-gaming-kembangkan-tim-profesional') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg2.jpeg') }}" alt="Lowongan Kerja Terbaru">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -843,8 +833,8 @@
                     <div class="berita-date">📅 25 Mei 2025</div>
                 </div>
                 <div class="berita-desc">Johen Gaming membuka posisi baru untuk tim profesional.</div>
-            </div>
-            <div class="berita-card">
+            </a>
+            <a href="{{ route('berita.show', 'pt-johen-sukses-abadi-resmi-berdiri-solusi-digital-gaming-commerce-terpercaya') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg1.jpeg') }}" alt="PT Johen Sukses Abadi Resmi Berdiri">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -852,10 +842,10 @@
                 <div class="berita-info">
                     <h3>PT Johen Sukses Abadi Resmi Berdiri</h3>
                     <div class="berita-date">📅 18 Mei 2025</div>
-                    <div class="berita-desc">Perusahaan digital gaming commerce resmi hadir sebagai solusi terpercaya di Indonesia.</div>
                 </div>
-            </div>
-            <div class="berita-card">
+                <div class="berita-desc">Perusahaan digital gaming commerce resmi hadir sebagai solusi terpercaya di Indonesia.</div>
+            </a>
+            <a href="{{ route('berita.show', 'tips-aman-jual-beli-akun-game-dari-johen-gaming') }}" class="berita-card">
                 <img src="{{ asset('img/bg/bg2.jpeg') }}" alt="Tips Aman Jual Beli Akun Game">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
@@ -865,7 +855,7 @@
                     <div class="berita-date">📅 20 Mei 2025</div>
                 </div>
                 <div class="berita-desc">Panduan bertransaksi akun game dengan aman dari tim Johen Gaming.</div>
-            </div>
+            </a>
         </div>
     </div>
 </section>

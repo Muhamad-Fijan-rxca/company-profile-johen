@@ -56,6 +56,9 @@
         background: #04102E;
         padding: 80px 0;
     }
+    .solusi-section .container {
+        max-width: 1320px;
+    }
     .solusi-header {
         text-align: center;
         margin-bottom: 56px;
@@ -78,12 +81,12 @@
     }
 
     /* ── PRODUCT CARDS — sama persis dengan PRODUK UNGGULAN di home ── */
-    .produk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .produk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
     .produk-card {
         background: #0A1E50;
         border: 1px solid rgba(0,212,255,0.12);
         border-radius: 20px;
-        padding: 40px 28px 36px;
+        padding: 44px 30px 38px;
         display: flex; flex-direction: column;
         transition: border-color 0.3s, transform 0.3s;
     }
@@ -93,12 +96,12 @@
     }
     .produk-card .p-icon {
         position: relative;
-        width: 52px; height: 52px;
+        width: 56px; height: 56px;
         border-radius: 50%;
         background: transparent;
         display: flex; align-items: center; justify-content: center;
-        font-size: 22px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin-bottom: 22px;
     }
     .produk-card .p-icon::before {
         content: '';
@@ -111,14 +114,14 @@
         mask-composite: exclude;
         pointer-events: none;
     }
-    .produk-card h3 { font-size: 18px; font-weight: 700; color: white; margin: 0 0 10px; }
-    .produk-card .p-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0 0 24px; flex: 1; border-bottom: 1px solid rgba(0,212,255,0.1); padding-bottom: 24px; }
-    .produk-card .p-price-label { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
-    .produk-card .p-price { font-size: 32px; font-weight: 500; margin-bottom: 20px; font-family: 'Poppins', sans-serif; background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .produk-card h3 { font-size: 19px; font-weight: 700; color: white; margin: 0 0 11px; }
+    .produk-card .p-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin: 0 0 26px; flex: 1; border-bottom: 1px solid rgba(0,212,255,0.1); padding-bottom: 26px; }
+    .produk-card .p-price-label { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; }
+    .produk-card .p-price { font-size: 34px; font-weight: 500; margin-bottom: 22px; font-family: 'Poppins', sans-serif; background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .produk-card .p-btn {
         position: relative;
         display: inline-flex; align-items: center;
-        padding: 10px 24px 10px 46px;
+        padding: 11px 26px 11px 50px;
         border: 1px solid rgba(6,104,192,0.15);
         border-radius: 100px;
         font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
@@ -134,14 +137,14 @@
                     background-position 0.5s ease;
     }
     .produk-card .p-btn:hover {
-        padding: 10px 46px 10px 24px;
+        padding: 11px 50px 11px 26px;
         background-position: 100% 0%;
     }
     .produk-card .p-btn .p-btn-icon {
         position: absolute;
         top: 50%; left: 5px;
         transform: translateY(-50%) rotate(0deg);
-        width: 28px; height: 28px; border-radius: 50%;
+        width: 30px; height: 30px; border-radius: 50%;
         background: white;
         display: flex; align-items: center; justify-content: center;
         font-size: 13px; color: #7035CC;
@@ -149,13 +152,13 @@
                     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .produk-card .p-btn:hover .p-btn-icon {
-        left: calc(100% - 33px);
+        left: calc(100% - 35px);
         transform: translateY(-50%) rotate(45deg);
     }
 
     /* ── STATS BAR (sama persis dengan hero-stats di home) ── */
     .stats-bar {
-        max-width: 1200px;
+        max-width: 1320px;
         margin: 56px auto 0;
         padding: 0 24px;
     }
