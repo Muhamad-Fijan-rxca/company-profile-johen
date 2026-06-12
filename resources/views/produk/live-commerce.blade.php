@@ -86,7 +86,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 13px 28px;
+    padding: 13px 28px 13px 50px;
     border: 1px solid rgba(6,104,192,0.15);
     border-radius: 100px;
     font-family: 'Poppins', sans-serif;
@@ -99,12 +99,28 @@
     background-position: 0% 0%;
     box-shadow: 0 4px 20px rgba(112,53,204,0.25);
     overflow: hidden;
-    transition: background-position 0.5s ease;
-    justify-content: center;
+    transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                background-position 0.5s ease;
 }
 .btn-topup-cta:hover {
+    padding: 13px 50px 13px 28px;
     background-position: 100% 0%;
     color: white;
+}
+.btn-topup-cta .btn-icon {
+    position: absolute;
+    top: 50%; left: 5px;
+    transform: translateY(-50%) rotate(0deg);
+    width: 30px; height: 30px; border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #7035CC;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-topup-cta:hover .btn-icon {
+    left: calc(100% - 35px);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 /* ── MAIN CONTENT ── */
@@ -364,8 +380,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
 }
 
 .cta-card-topup .topup-icon img {
@@ -403,6 +419,67 @@
     margin-top: 4px;
 }
 
+/* ── JADWAL CARDS ── */
+.card-jadwal {
+    background: #0A1E50;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 24px 28px;
+    position: relative;
+}
+.card-jadwal .jadwal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+.card-jadwal .jadwal-sesi {
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+.card-jadwal .jadwal-icon {
+    position: absolute;
+    top: 4px;
+    right: 36px;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 0;
+}
+.card-jadwal .jadwal-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.card-jadwal .jadwal-hari {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+}
+.card-jadwal .jadwal-jam {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+.card-jadwal .jadwal-jam img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-left: 6px;
+}
+.card-jadwal .jadwal-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
 @media (max-width: 992px) {
     .grid-3-topup { grid-template-columns: repeat(2, 1fr); }
     .grid-4-topup { grid-template-columns: repeat(2, 1fr); }
@@ -430,6 +507,7 @@
             <h1>Live Commerce</h1>
             <p>Belanja lebih interaktif dan transparan melalui live streaming. Lihat langsung produk yang dijual dan bertanya secara real-time.</p>
             <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn-topup-cta">
+                <span class="btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                 Tonton Live Streaming
             </a>
         </div>
@@ -448,118 +526,75 @@
             </h2>
         </div>
 
-        {{-- 2B — PLATFORM LIVE --}}
-        <span class="section-label">Ikuti Live Streaming Kami di</span>
-        <div class="platform-strip">
-            <div class="platform-item">
-                <div class="plat-icon ig"><i class="fab fa-instagram"></i></div>
-                <div class="plat-info">
-                    <div class="plat-name">Instagram Live</div>
-                    <div class="plat-user">@johengaming.id</div>
-                </div>
-            </div>
-            <div class="platform-item">
-                <div class="plat-icon tt"><i class="fab fa-tiktok"></i></div>
-                <div class="plat-info">
-                    <div class="plat-name">TikTok Live</div>
-                    <div class="plat-user">@johengaming.offline_</div>
-                </div>
-            </div>
-            <div class="platform-item">
-                <div class="plat-icon yt"><i class="fab fa-youtube"></i></div>
-                <div class="plat-info">
-                    <div class="plat-name">YouTube Live</div>
-                    <div class="plat-user">Johen Gaming</div>
-                </div>
-            </div>
-            <div class="platform-item">
-                <div class="plat-icon fb"><i class="fab fa-facebook"></i></div>
-                <div class="plat-info">
-                    <div class="plat-name">Facebook Live</div>
-                    <div class="plat-user">Johen Gaming</div>
-                </div>
-            </div>
-        </div>
+
 
         {{-- 2C — LAYANAN LIVE --}}
         <span class="section-label">Layanan Live Commerce</span>
-        <div class="grid-3-topup">
-            <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/petir.png') }}" alt="Live Jual Akun"></div>
-                <h4>Live Jual Akun</h4>
-                <p>Sesi live streaming di mana akun game dijual secara langsung. Pembeli bisa melihat detail akun real-time dan bertransaksi saat itu juga.</p>
-            </div>
-            <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/stikps.png') }}" alt="Live Top Up"></div>
-                <h4>Live Top Up</h4>
-                <p>Top up game secara langsung di sesi live. Pelanggan bisa melihat proses pengisian diamond, UC, dan mata uang game lainnya secara transparan.</p>
-            </div>
-            <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/aman.png') }}" alt="Live Joki Game"></div>
-                <h4>Live Joki Game</h4>
-                <p>Sesi joki game yang disiarkan langsung. Pelanggan bisa melihat progress push rank secara real-time dan memastikan kualitas joki kami.</p>
-            </div>
-        </div>
-
-        {{-- 2D — KEUNGGULAN --}}
-        <span class="section-label">Keunggulan Live Commerce</span>
         <div class="grid-4-topup">
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/petir.png') }}" alt="Transparan"></div>
-                <h4>Transparan</h4>
-                <p>Lihat langsung produk yang dijual secara real-time tanpa rekayasa atau editing</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/give.png') }}" alt="Give Away"></div>
+                <h4>Give Away</h4>
+                <p>Ikuti live streaming dan dapatkan kesempatan memenangkan hadiah menarik seperti diamond, skin, dan akun game gratis.</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/cs2.png') }}" alt="Interaktif"></div>
-                <h4>Interaktif</h4>
-                <p>Tanya jawab langsung dengan host melalui komentar live streaming</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/diskon.png') }}" alt="Promo Exclusive"></div>
+                <h4>Promo Exclusive</h4>
+                <p>Nikmati harga spesial dan diskon eksklusif yang hanya tersedia selama sesi live berlangsung.</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/user.png') }}" alt="Real-time"></div>
-                <h4>Real-time</h4>
-                <p>Transaksi diproses saat live berlangsung — bayar dan terima langsung</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/interaksi.png') }}" alt="Interaksi Langsung"></div>
+                <h4>Interaksi Langsung</h4>
+                <p>Bertanya langsung kepada host, lihat detail produk secara real-time, dan dapatkan rekomendasi sesuai kebutuhan.</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/aman.png') }}" alt="Terpercaya"></div>
-                <h4>Terpercaya</h4>
-                <p>Host profesional dan berpengalaman dengan ribuan followers aktif</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/sale.png') }}" alt="Flash Sale"></div>
+                <h4>Flash Sale</h4>
+                <p>Dapatkan penawaran flash sale dengan harga termurah untuk top up, akun, dan jasa joki selama sesi live.</p>
             </div>
         </div>
 
-        {{-- 2E — CARA KERJA --}}
-        <span class="section-label">Cara Kerja Live Commerce</span>
+        {{-- 2D — JADWAL LIVE --}}
+        <span class="section-label">Jadwal Live Streaming</span>
         <div class="grid-4-topup">
-            <div class="card-topup step">
-                <div class="step-row">
-                    <div class="step-number">01</div>
-                    <h4>Jadwalkan</h4>
+            <div class="card-jadwal">
+                <div class="jadwal-header">
+                    <div class="jadwal-sesi">Sesi 1</div>
+                    <div class="jadwal-icon"><img src="{{ asset('img/icon/live.png') }}" alt="Live"></div>
                 </div>
-                <p>Cek jadwal live streaming Johen Gaming di Instagram, TikTok, atau YouTube</p>
+                <div class="jadwal-hari">Setiap Hari</div>
+                <div class="jadwal-jam">07.00 - 12.00 WIB <img src="{{ asset('img/icon/tiktok.png') }}" alt="TikTok"></div>
+                <p class="jadwal-desc">Live setiap hari dengan berbagai promo menarik untukmu</p>
             </div>
-            <div class="card-topup step">
-                <div class="step-row">
-                    <div class="step-number">02</div>
-                    <h4>Tonton Live</h4>
+            <div class="card-jadwal">
+                <div class="jadwal-header">
+                    <div class="jadwal-sesi">Sesi 2</div>
+                    <div class="jadwal-icon"><img src="{{ asset('img/icon/live.png') }}" alt="Live"></div>
                 </div>
-                <p>Bergabung di sesi live dan lihat produk yang ditawarkan secara langsung</p>
+                <div class="jadwal-hari">Setiap Hari</div>
+                <div class="jadwal-jam">12.00 - 17.00 WIB <img src="{{ asset('img/icon/tiktok.png') }}" alt="TikTok"></div>
+                <p class="jadwal-desc">Live setiap hari dengan berbagai promo menarik untukmu</p>
             </div>
-            <div class="card-topup step">
-                <div class="step-row">
-                    <div class="step-number">03</div>
-                    <h4>Kommentar</h4>
+            <div class="card-jadwal">
+                <div class="jadwal-header">
+                    <div class="jadwal-sesi">Sesi 3</div>
+                    <div class="jadwal-icon"><img src="{{ asset('img/icon/live.png') }}" alt="Live"></div>
                 </div>
-                <p>Tanyakan detail produk melalui kolom komentar live atau hubungi admin via WA</p>
+                <div class="jadwal-hari">Setiap Hari</div>
+                <div class="jadwal-jam">17.00 - 21.00 WIB <img src="{{ asset('img/icon/tiktok.png') }}" alt="TikTok"></div>
+                <p class="jadwal-desc">Live setiap hari dengan berbagai promo menarik untukmu</p>
             </div>
-            <div class="card-topup step">
-                <div class="step-row">
-                    <div class="step-number">04</div>
-                    <h4>Transaksi</h4>
+            <div class="card-jadwal">
+                <div class="jadwal-header">
+                    <div class="jadwal-sesi">Sesi 4</div>
+                    <div class="jadwal-icon"><img src="{{ asset('img/icon/live.png') }}" alt="Live"></div>
                 </div>
-                <p>Lakukan pembayaran dan terima produk secara langsung saat live berlangsung</p>
+                <div class="jadwal-hari">Setiap Hari</div>
+                <div class="jadwal-jam">21.00 - 23.00 WIB <img src="{{ asset('img/icon/tiktok.png') }}" alt="TikTok"></div>
+                <p class="jadwal-desc">Live setiap hari dengan berbagai promo menarik untukmu</p>
             </div>
         </div>
 
-        {{-- 2F — FAQ --}}
+        {{-- 2E — FAQ --}}
         <div class="faq-row">
             <div>
                 <span class="section-label">FAQ</span>
@@ -592,7 +627,7 @@
                 </div>
             </div>
             <div class="cta-card-topup">
-                <div class="topup-icon"><img src="{{ asset('img/rank/ml/5imo.png') }}" alt="Live"></div>
+                <div class="topup-icon"><img src="{{ asset('img/icon/livestream.png') }}" alt="Live"></div>
                 <div class="cta-content">
                     <h3 class="cta-title">Ikuti Live Streaming</h3>
                     <p class="cta-subtitle">Jangan lewatkan sesi live seru dengan penawaran spesial dan diskon eksklusif!</p>

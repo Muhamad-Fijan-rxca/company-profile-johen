@@ -429,7 +429,8 @@
             <p>Isi ulang diamond, skin, dan item game favoritmu dengan harga termurah dan proses tercepat. Banyak pilihan game populer!</p>
             <div class="mulai-label">Mulai dari</div>
             <div class="harga-besar">Rp 10.000</div>
-            <a href="https://www.johengaming.com/id-id" target="_blank" rel="noopener" class="btn-topup-cta" style="justify-content:center;padding:13px 28px;">
+            <a href="https://www.johengaming.com/id-id" target="_blank" rel="noopener" class="btn-topup-cta">
+                <span class="btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                 Top Up Sekarang
             </a>
         </div>

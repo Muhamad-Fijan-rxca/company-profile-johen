@@ -104,7 +104,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 13px 28px;
+    padding: 13px 28px 13px 50px;
     border: 1px solid rgba(6,104,192,0.15);
     border-radius: 100px;
     font-family: 'Poppins', sans-serif;
@@ -119,11 +119,26 @@
     overflow: hidden;
     transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                 background-position 0.5s ease;
-    justify-content: center;
 }
 .btn-topup-cta:hover {
+    padding: 13px 50px 13px 28px;
     background-position: 100% 0%;
     color: white;
+}
+.btn-topup-cta .btn-icon {
+    position: absolute;
+    top: 50%; left: 5px;
+    transform: translateY(-50%) rotate(0deg);
+    width: 30px; height: 30px; border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #7035CC;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-topup-cta:hover .btn-icon {
+    left: calc(100% - 35px);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 /* ── MAIN CONTENT ── */
@@ -278,7 +293,7 @@
 }
 
 .game-item img {
-    height: 36px;
+    height: 48px;
     width: auto;
     object-fit: contain;
     margin-bottom: 12px;
@@ -286,14 +301,14 @@
 }
 
 .game-item h4 {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     color: #FFFFFF;
     margin: 0;
 }
 
 .game-item .game-count {
-    font-size: 12px;
+    font-size: 17px;
     color: #0987F5;
 }
 
@@ -487,9 +502,8 @@
         <div class="hero-topup-content">
             <h1>Jual Beli Akun Game</h1>
             <p>Platform jual beli akun game online terpercaya. Proses cepat, aman, dan transparan dengan harga terbaik.</p>
-            <div class="mulai-label">Mulai dari</div>
-            <div class="harga-besar">Rp 100.000</div>
             <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn-topup-cta">
+                <span class="btn-icon"><img src="{{ asset('img/icon/petunjuk.png') }}" alt="→" style="width:12px;height:12px;object-fit:contain;"></span>
                 Lihat Akun Tersedia
             </a>
         </div>
@@ -527,7 +541,7 @@
                 <span class="game-count">95+ akun</span>
             </div>
             <div class="game-item">
-                <img src="{{ asset('img/logo/valorant.png') }}" alt="Valorant">
+                <img src="{{ asset('img/logo/valorant.png') }}" alt="Valorant" style="height:56px;">
                 <h4>Valorant</h4>
                 <span class="game-count">60+ akun</span>
             </div>
@@ -537,7 +551,7 @@
                 <span class="game-count">70+ akun</span>
             </div>
             <div class="game-item">
-                <img src="{{ asset('img/logo/efootball.png') }}" alt="eFootball">
+                <img src="{{ asset('img/logo/efootball.png') }}" alt="eFootball" style="height:56px;">
                 <h4>eFootball</h4>
                 <span class="game-count">40+ akun</span>
             </div>
@@ -547,24 +561,24 @@
         <span class="section-label">Keunggulan Jual Beli Akun di Johen Gaming</span>
         <div class="grid-4-topup">
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/aman.png') }}" alt="Terpercaya"></div>
-                <h4>Terpercaya</h4>
-                <p>Platform jual beli akun game resmi dengan kantor operasional fisik dan legalitas perusahaan</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/centangbesar.png') }}" alt="Verifikasi Akun"></div>
+                <h4>Verifikasi Akun</h4>
+                <p>Setiap akun telah melalui proses verifikasi ketat untuk memastikan keaslian data dan keamanannya</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/petir.png') }}" alt="Proses Cepat"></div>
-                <h4>Proses Cepat</h4>
-                <p>Transaksi jual beli akun diproses dalam hitungan menit setelah pembayaran diverifikasi</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/piagam.png') }}" alt="Akun Berkualitas"></div>
+                <h4>Akun Berkualitas</h4>
+                <p>Kami hanya menjual akun game berkualitas dengan hero dan skin lengkap serta harga terbaik</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/stikps.png') }}" alt="Akun Terverifikasi"></div>
-                <h4>Akun Terverifikasi</h4>
-                <p>Setiap akun telah melalui proses verifikasi untuk memastikan keaslian data dan keamanannya</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/gembok.png') }}" alt="Proses Aman"></div>
+                <h4>Proses Aman</h4>
+                <p>Transaksi jual beli akun diproses dengan sistem keamanan berlapis dan terenkripsi</p>
             </div>
             <div class="card-topup">
-                <div class="icon-wrap"><img src="{{ asset('img/icon/cs2.png') }}" alt="Garansi Aman"></div>
-                <h4>Garansi Aman</h4>
-                <p>Garansi keamanan transaksi dengan sistem escrow — dana aman sampai akun diterima pembeli</p>
+                <div class="icon-wrap"><img src="{{ asset('img/icon/cs2.png') }}" alt="Dukungan Admin"></div>
+                <h4>Dukungan Admin</h4>
+                <p>Tim admin siap membantu anda 24/7 melalui WhatsApp untuk konsultasi dan proses transaksi</p>
             </div>
         </div>
 
@@ -573,23 +587,23 @@
         <div class="alur-row">
             <div class="alur-card">
                 <span class="alur-num">01</span>
-                <h4>Pilih Akun</h4>
-                <p>Telusuri daftar akun game yang tersedia dan pilih sesuai kebutuhanmu</p>
+                <h4>Cari Akun</h4>
+                <p>Telusuri dan pilih akun game yang tersedia sesuai dengan kebutuhan dan budgetmu</p>
             </div>
             <div class="alur-card">
                 <span class="alur-num">02</span>
-                <h4>Negosiasi</h4>
-                <p>Hubungi admin untuk negosiasi harga dan konsultasi detail akun</p>
+                <h4>Pembayaran</h4>
+                <p>Lakukan pembayaran melalui transfer bank atau e-wallet yang tersedia</p>
             </div>
             <div class="alur-card">
                 <span class="alur-num">03</span>
-                <h4>Pembayaran</h4>
-                <p>Lakukan pembayaran melalui metode transfer atau e-wallet yang tersedia</p>
+                <h4>Verifikasi Admin</h4>
+                <p>Admin akan memverifikasi pembayaran dan menyiapkan data akun untuk dikirimkan</p>
             </div>
             <div class="alur-card">
                 <span class="alur-num">04</span>
                 <h4>Akun Diterima</h4>
-                <p>Data akun dikirimkan setelah pembayaran dikonfirmasi dan diverifikasi</p>
+                <p>Data akun dikirimkan setelah pembayaran dikonfirmasi dan diverifikasi oleh admin</p>
             </div>
         </div>
 
@@ -655,9 +669,14 @@
                 <div class="cta-content">
                     <h3 class="cta-title">Jual Beli Akun Sekarang</h3>
                     <p class="cta-subtitle">Dapatkan akun game impianmu dengan harga terbaik dan proses terpercaya.</p>
-                    <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn-topup-cta">
-                        Hubungi Admin
-                    </a>
+                    <div style="display:flex;gap:12px;margin-top:8px">
+                        <a href="https://www.johengaming.com/id-id" target="_blank" rel="noopener" class="btn-topup-cta" style="flex:1;justify-content:center;padding:13px 20px;">
+                            Kunjungi Marketplace
+                        </a>
+                        <a href="https://linktr.ee/johengaming" target="_blank" rel="noopener" class="btn-topup-cta" style="flex:1;justify-content:center;padding:13px 20px;">
+                            <i class="fas fa-tree" style="font-size:14px"></i> Linktree
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
