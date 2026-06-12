@@ -215,7 +215,7 @@
         <div class="berita-grid">
             @foreach($berita as $b)
             <a href="{{ route('berita.show', $b->slug) }}" class="berita-card">
-                <img src="{{ $b->thumbnail ? Storage::url($b->thumbnail) : asset('img/bg/bg1.jpeg') }}" alt="{{ $b->judul }}">
+                <img src="{{ $b->thumbnail ? (str_starts_with($b->thumbnail, 'img/') ? asset($b->thumbnail) : Storage::url($b->thumbnail)) : asset('img/bg/bg1.jpeg') }}" alt="{{ $b->judul }}">
                 <div class="berita-overlay"></div>
                 <div class="berita-hover-top"></div>
                 <div class="berita-hover-bottom"></div>

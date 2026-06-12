@@ -18,30 +18,34 @@ $estBaca = max(1, ceil($words / 200));
     align-items: flex-end;
     padding: 60px 0 48px;
     overflow: hidden;
-    background: #020D2E;
+    background: #020B25;
 }
 
 .hero-article::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: url("{{ $berita->thumbnail ? Storage::url($berita->thumbnail) : asset('img/bg/bg1.jpeg') }}") center center / cover no-repeat;
+    background: url("{{ $berita->thumbnail ? (str_starts_with($berita->thumbnail, 'img/') ? asset($berita->thumbnail) : Storage::url($berita->thumbnail)) : asset('img/bg/bg1.jpeg') }}") center center / cover no-repeat;
     z-index: 1;
 }
-
 .hero-article::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, #0D1226 0%, rgba(13,18,38,0.75) 35%, rgba(13,18,38,0.3) 70%, rgba(13,18,38,0.1) 100%);
+    background: linear-gradient(0deg, #020B25 0%, rgba(2,11,37,0.75) 35%, rgba(2,11,37,0.3) 70%, rgba(2,11,37,0.1) 100%);
     z-index: 2;
 }
 
 
+.hero-article .container {
+    padding-left: 100px;
+    margin-left: 0;
+    max-width: 1320px;
+}
 .hero-article-content {
     position: relative;
     z-index: 3;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .hero-article-content .label-kategori {
@@ -65,8 +69,8 @@ $estBaca = max(1, ceil($words / 200));
 .hero-article-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    font-size: 13px;
+    gap: 0;
+    font-size: 15px;
     color: rgba(255,255,255,0.7);
 }
 
@@ -74,6 +78,15 @@ $estBaca = max(1, ceil($words / 200));
     display: flex;
     align-items: center;
     gap: 6px;
+    padding: 0 20px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+}
+.hero-article-meta span:first-child {
+    padding-left: 0;
+}
+.hero-article-meta span:last-child {
+    border-right: none;
+    padding-right: 0;
 }
 
 .hero-article-meta i {
@@ -83,14 +96,18 @@ $estBaca = max(1, ceil($words / 200));
 
 /* ── MAIN LAYOUT ── */
 .article-main-section {
-    background: #0D1226;
+    background: #020B25;
     padding: 48px 0;
+}
+.article-main-section .container,
+.carousel-section .container {
+    max-width: 1400px;
 }
 
 .article-layout {
     display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 48px;
+    grid-template-columns: 1fr 400px;
+    gap: 85px;
     align-items: start;
 }
 
@@ -207,27 +224,37 @@ $estBaca = max(1, ceil($words / 200));
 
 /* ── SIDEBAR ── */
 .sidebar-card {
-    background: #111827;
+    background: #0A1E50;
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 16px;
-    padding: 24px;
+    padding: 32px;
     position: sticky;
     top: 100px;
 }
+.sidebar-card::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebar-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sidebar-card::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+}
 
 .sidebar-title {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 26px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .sidebar-item {
     display: flex;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 16px;
+    margin-bottom: 22px;
     text-decoration: none;
     color: inherit;
 }
@@ -235,8 +262,8 @@ $estBaca = max(1, ceil($words / 200));
 .sidebar-item:last-child { margin-bottom: 0; }
 
 .sidebar-item .thumb {
-    width: 64px;
-    height: 64px;
+    width: 140px;
+    height: 90px;
     border-radius: 10px;
     object-fit: cover;
     flex-shrink: 0;
@@ -249,11 +276,11 @@ $estBaca = max(1, ceil($words / 200));
 }
 
 .sidebar-item .info h4 {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: #FFFFFF;
     line-height: 1.4;
-    margin: 0 0 4px;
+    margin: 0 0 6px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -262,7 +289,10 @@ $estBaca = max(1, ceil($words / 200));
 }
 
 .sidebar-item:hover .info h4 {
-    color: #3B82F6;
+    background: linear-gradient(90deg, #0668C0, #7035CC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .sidebar-item .info .date {
@@ -277,7 +307,7 @@ $estBaca = max(1, ceil($words / 200));
 
 /* ── CAROUSEL SECTION ── */
 .carousel-section {
-    background: #0D1226;
+    background: #020B25;
     padding: 0 0 60px;
 }
 
@@ -479,23 +509,21 @@ $estBaca = max(1, ceil($words / 200));
         <div class="article-layout">
             {{-- LEFT COLUMN — ARTIKEL --}}
             <div class="article-body-wrap">
-                @if($berita->thumbnail)
-                    <img src="{{ Storage::url($berita->thumbnail) }}" alt="{{ $berita->judul }}" class="featured-img">
-                @else
-                    <div class="featured-img-placeholder">📰</div>
-                @endif
+                <img src="{{ $berita->thumbnail ? (str_starts_with($berita->thumbnail, 'img/') ? asset($berita->thumbnail) : Storage::url($berita->thumbnail)) : asset('img/bg/bg1.jpeg') }}" alt="{{ $berita->judul }}" class="featured-img">
 
                 <div class="article-body">
                     {!! $berita->isi !!}
                 </div>
 
+                @if($berita->quote)
                 {{-- Blockquote --}}
                 <div class="blockquote-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <blockquote>
-                        Peresmian ini menjadi tonggak awal perjalanan kami dalam membangun platform digital gaming yang aman, nyaman, dan terpercaya bagi seluruh gamer di Indonesia.
+                        {{ $berita->quote }}
                     </blockquote>
                 </div>
+                @endif
 
                 {{-- Share --}}
                 <div class="share-section">
@@ -515,7 +543,7 @@ $estBaca = max(1, ceil($words / 200));
                     @forelse($lainnya as $l)
                     <a href="{{ route('berita.show', $l->slug) }}" class="sidebar-item">
                         @if($l->thumbnail)
-                            <img src="{{ Storage::url($l->thumbnail) }}" alt="{{ $l->judul }}" class="thumb">
+                            <img src="{{ str_starts_with($l->thumbnail, 'img/') ? asset($l->thumbnail) : Storage::url($l->thumbnail) }}" alt="{{ $l->judul }}" class="thumb">
                         @else
                             <div class="thumb">📰</div>
                         @endif
@@ -573,7 +601,7 @@ $estBaca = max(1, ceil($words / 200));
             <div class="carousel-track" id="beritaCarouselTrack">
                 @forelse($beritaLainnya as $bl)
                 <a href="{{ route('berita.show', $bl->slug) }}" class="berita-carousel-card">
-                    <img src="{{ $bl->thumbnail ? Storage::url($bl->thumbnail) : asset('img/bg/bg1.jpeg') }}" alt="{{ $bl->judul }}">
+                    <img src="{{ $bl->thumbnail ? (str_starts_with($bl->thumbnail, 'img/') ? asset($bl->thumbnail) : Storage::url($bl->thumbnail)) : asset('img/bg/bg1.jpeg') }}" alt="{{ $bl->judul }}">
                     <div class="overlay"></div>
                     <div class="info">
                         <h4>{{ $bl->judul }}</h4>

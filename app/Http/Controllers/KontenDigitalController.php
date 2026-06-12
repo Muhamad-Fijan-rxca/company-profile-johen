@@ -10,6 +10,8 @@ class KontenDigitalController extends Controller
     {
         $liveCommerce = KontenDigital::aktif()->where('kategori', 'Live Commerce')->orderBy('urutan')->get();
         $kontenDigital = KontenDigital::aktif()->where('kategori', 'Konten Digital')->orderBy('urutan')->get();
-        return view('konten-digital', compact('liveCommerce', 'kontenDigital'));
+        $partners = KontenDigital::aktif()->where('kategori', 'Partner')->orderBy('urutan')->get();
+
+        return view('partner', compact('liveCommerce', 'kontenDigital', 'partners'));
     }
 }

@@ -21,9 +21,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Kategori *</label>
-                    <select name="kategori" class="form-control @error('kategori') is-invalid @enderror" required>
+                    <select name="kategori" id="kategoriSelect" class="form-control @error('kategori') is-invalid @enderror" required>
                         <option value="">-- Pilih Kategori --</option>
-                        @foreach(['Live Commerce', 'Konten Digital'] as $kat)
+                        @foreach(['Live Commerce', 'Konten Digital', 'Partner'] as $kat)
                         <option value="{{ $kat }}" {{ old('kategori', $konten->kategori) === $kat ? 'selected' : '' }}>{{ $kat }}</option>
                         @endforeach
                     </select>
@@ -35,6 +35,32 @@
                 <label class="form-label">Deskripsi *</label>
                 <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" style="min-height:130px" required>{{ old('deskripsi', $konten->deskripsi) }}</textarea>
                 @error('deskripsi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+
+            {{-- PARTNER FIELDS --}}
+            <div id="partnerFields" style="display:none">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Role / Kategori Creator</label>
+                        <input type="text" name="role" class="form-control @error('role') is-invalid @enderror" value="{{ old('role', $konten->role) }}" placeholder="Contoh: PUBG Mobile Creator">
+                        @error('role')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Jumlah Followers</label>
+                        <input type="text" name="followers" class="form-control @error('followers') is-invalid @enderror" value="{{ old('followers', $konten->followers) }}" placeholder="Contoh: 247.8K Followers">
+                        @error('followers')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Maskot Influencer (maks 2MB)</label>
+                    @if($konten->mascot_influencer)
+                        <div style="margin-bottom:8px">
+                            <img src="{{ Storage::url($konten->mascot_influencer) }}" style="height:80px;border-radius:6px;object-fit:cover">
+                        </div>
+                    @endif
+                    <input type="file" name="mascot_influencer" class="form-control @error('mascot_influencer') is-invalid @enderror" accept="image/*">
+                    @error('mascot_influencer')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
             </div>
 
             <div class="form-row">
@@ -70,4 +96,16 @@
         </form>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    const sel = document.getElementById('kategoriSelect');
+    const partnerFields = document.getElementById('partnerFields');
+    function togglePartnerFields() {
+        partnerFields.style.display = sel.value === 'Partner' ? 'block' : 'none';
+    }
+    sel.addEventListener('change', togglePartnerFields);
+    togglePartnerFields();
+</script>
+@endpush
 @endsection

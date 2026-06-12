@@ -19,7 +19,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>
                         @if($b->thumbnail)
-                            <img src="{{ Storage::url($b->thumbnail) }}" style="width:80px;height:50px;object-fit:cover;border-radius:6px" alt="{{ $b->judul }}">
+                            <img src="{{ str_starts_with($b->thumbnail, 'img/') ? asset($b->thumbnail) : Storage::url($b->thumbnail) }}" style="width:80px;height:50px;object-fit:cover;border-radius:6px" alt="{{ $b->judul }}">
                         @else
                             <div style="width:80px;height:50px;background:var(--bg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px">📰</div>
                         @endif

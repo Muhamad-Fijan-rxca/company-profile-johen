@@ -6,84 +6,77 @@
 
 /* ── HERO ── */
 .page-hero-partner {
-    position: relative;
-    min-height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 0;
-    overflow: hidden;
+    min-height: 55vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
     background: #020D2E;
+    padding: 110px 24px 80px;
 }
-
 .page-hero-partner::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: url("{{ asset('img/figma/hero-building.jpg') }}") center center / cover no-repeat;
-    opacity: 0.25;
-    z-index: 1;
+    position: absolute; inset: 0; z-index: 1;
+    background: url('{{ asset("img/bg/bg1.jpeg") }}') center/cover no-repeat;
+    opacity: 0.3;
 }
-
 .page-hero-partner::after {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(2,13,46,0.85) 0%, rgba(2,13,46,0.7) 50%, rgba(2,13,46,0.85) 100%);
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg,
+        rgba(1,32,60,0.85) 0%,
+        rgba(5,42,72,0.75) 45%,
+        rgba(10,48,80,0.80) 100%
+    );
     z-index: 2;
-}
-
-.hero-partner-watermark {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(64px, 10vw, 120px);
-    font-weight: 900;
-    color: rgba(255,255,255,0.04);
-    white-space: nowrap;
-    letter-spacing: 8px;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.hero-partner-watermark i {
-    font-size: clamp(48px, 7vw, 80px);
-    opacity: 0.6;
 }
 
 .hero-partner-content {
     position: relative;
     z-index: 3;
+    text-align: center;
+    max-width: 720px;
 }
 
 .hero-partner-content h1 {
-    font-size: clamp(32px, 5vw, 48px);
+    font-size: clamp(40px, 5.5vw, 62px);
     font-weight: 900;
-    background: linear-gradient(90deg, #0987F5, #854DEA);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #1a8cff, #7c3aed, #7c3aed);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0 0 12px;
+    filter: drop-shadow(0 0 20px rgba(26,140,255,0.3)) drop-shadow(0 0 40px rgba(124,58,237,0.15));
 }
 
 .hero-partner-content p {
-    font-size: 15px;
-    color: #9CA3AF;
-    line-height: 1.7;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+    max-width: 580px;
     margin: 0 auto;
-    max-width: 520px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,255,0.1);
 }
 
 /* ── MAIN SECTION ── */
 .partner-section {
-    background: #0D1226;
+    background: #060b18;
     padding: 48px 0 80px;
+    position: relative;
+}
+.partner-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(rgba(30,58,95,0.4) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 0;
+}
+.partner-section .container {
+    max-width: 1320px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── TAB NAV ── */
@@ -94,16 +87,16 @@
 }
 
 .tab-nav-btn {
-    padding: 10px 28px;
-    border-radius: 100px;
+    padding: 12px 32px;
+    border-radius: 8px;
     border: 1.5px solid rgba(255,255,255,0.1);
     background: transparent;
     color: #9CA3AF;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s ease;
 }
 
 .tab-nav-btn:hover {
@@ -112,9 +105,12 @@
 }
 
 .tab-nav-btn.active {
-    background: #3B82F6;
-    border-color: #3B82F6;
+    background: linear-gradient(90deg, #0668C0, #7035CC, #7035CC, #0668C0);
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    border: none;
     color: white;
+    transition: all 0.4s ease;
 }
 
 /* ── HEADING ── */
@@ -124,7 +120,7 @@
 }
 
 .partner-heading h2 {
-    font-size: clamp(22px, 3vw, 32px);
+    font-size: clamp(26px, 3.5vw, 38px);
     font-weight: 800;
     line-height: 1.3;
     margin: 0;
@@ -153,70 +149,150 @@
 .partner-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
 
 /* ── PARTNER CARD ── */
 .partner-card {
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(6,182,212,0.2);
-    transition: border-color 0.3s, transform 0.3s;
-    background: #0A0E1A;
+    border: 1px solid #1e3a5f;
+    background: linear-gradient(180deg, #061F59, #020D2E);
+    position: relative;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
-
+.partner-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("{{ asset('img/bg/grid.png') }}") center / cover no-repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
 .partner-card:hover {
-    border-color: rgba(6,182,212,0.5);
+    box-shadow: 0 0 20px #00cfff, 0 0 40px #7b3fe4;
+    border-color: #00cfff;
     transform: translateY(-4px);
 }
 
+/* ── ART / ILUSTRASI ── */
 .partner-card .card-art {
-    background: linear-gradient(180deg, #0D1B3E, #0A0E1A);
-    padding: 28px 20px 20px;
-    text-align: center;
     position: relative;
-    min-height: 200px;
+    z-index: 1;
+    min-height: 260px;
+    background: transparent;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 16px;
+    overflow: hidden;
+}
+.partner-card .card-art .card-overlay-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(6,31,89,0.9) 0%, rgba(6,31,89,0.3) 50%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.partner-card .card-art .card-overlay-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(0deg, rgba(6,31,89,0.85) 0%, rgba(6,31,89,0.2) 50%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.partner-card:hover .card-art .card-overlay-top {
+    opacity: 0.6;
+}
+.partner-card:hover .card-art .card-overlay-bottom {
+    opacity: 0.6;
+}
+
+.partner-card .card-art .char-illustration {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+.partner-card .card-art .char-illustration .char-img {
+    width: auto;
+    height: 220px;
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 0.85;
+    margin: 0;
+    display: block;
+    margin-top: 40px;
+    position: relative;
+}
+.partner-card .card-art .char-illustration .char-img:first-child {
+    margin-right: -60px;
+    z-index: 1;
+}
+.partner-card .card-art .char-illustration .char-img:last-child {
+    z-index: 2;
+}
+.partner-card .card-art .char-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    opacity: 0.3;
+    background: radial-gradient(ellipse at 50% 100%, rgba(0,207,255,0.08) 0%, transparent 70%);
+}
+
+/* ── BADGE OVERLAY ── */
+.partner-card .card-art .badge-wrap {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 0;
 }
-
-.partner-card .card-art .brand-text {
-    line-height: 1;
+.partner-card .card-art .badge-wrap .logo-shield {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 48px;
+    height: 48px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+    margin-bottom: 4px;
+    object-fit: contain;
 }
-
-.partner-card .card-art .brand-partner {
-    font-size: 28px;
-    font-weight: 900;
-    color: #FFFFFF;
-    letter-spacing: 6px;
+.partner-card:hover .card-art .badge-wrap .logo-shield {
+    transform: translateX(-50%) translateY(-16px);
+}
+.partner-card .card-art .badge-wrap .badge-img {
+    position: relative;
+    z-index: 2;
+    width: 160px;
+    height: auto;
+    object-fit: contain;
     display: block;
+    transition: filter 0.3s ease;
+}
+.partner-card:hover .card-art .badge-wrap .badge-img {
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(0,207,255,0.5));
 }
 
-.partner-card .card-art .brand-johen {
-    font-size: 40px;
-    font-weight: 900;
-    background: linear-gradient(90deg, #0987F5, #854DEA);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 4px;
-    display: block;
-    margin-top: -4px;
-}
-
-.partner-card .card-art .char-icon {
-    font-size: 56px;
-    margin-bottom: 12px;
-    opacity: 0.8;
-    line-height: 1;
-}
-
+/* ── CARD INFO ── */
 .partner-card .card-info {
-    background: #0A0E1A;
-    padding: 18px 20px 20px;
-    border-top: 1px solid rgba(6,182,212,0.1);
+    position: relative;
+    z-index: 1;
+    padding: 16px 20px 20px;
+    border-top: 1px solid rgba(30,58,95,0.5);
 }
 
 .partner-card .card-info .partner-name {
@@ -254,19 +330,20 @@
     gap: 6px;
     width: 100%;
     padding: 10px 0;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #7C3AED, #6D28D9);
+    border-radius: 8px;
+    background: linear-gradient(to right, #7b3fe4, #3b82f6);
     color: white;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, box-shadow 0.3s;
     border: none;
     cursor: pointer;
 }
 
 .btn-partner-detail:hover {
-    opacity: 0.9;
+    opacity: 0.92;
+    box-shadow: 0 0 12px rgba(59,130,246,0.4);
     color: white;
 }
 
@@ -274,7 +351,7 @@
 .grid-2-sosmed {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 28px;
 }
 
 .sosmed-card {
@@ -456,15 +533,9 @@
 
 {{-- SECTION 1 — HERO --}}
 <section class="page-hero-partner">
-    <div class="hero-partner-watermark">
-        <i class="fas fa-shield-alt"></i>
-        <span>JOHEN GAMING</span>
-    </div>
-    <div class="container">
-        <div class="hero-partner-content">
-            <h1>Partner Kami</h1>
-            <p>Layanan digital kreatif dari PT. Johen Sukses Abadi untuk kebutuhan gaming anda.</p>
-        </div>
+    <div class="hero-partner-content">
+        <h1>Partner Kami</h1>
+        <p>Layanan digital kreatif dari PT. Johen Sukses Abadi untuk kebutuhan gaming anda.</p>
     </div>
 </section>
 
@@ -490,41 +561,43 @@
 
             {{-- 2C — GRID PARTNER --}}
             <div class="partner-grid">
-                @php
-                $partners = [
-                    ['name' => 'XCRORE | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '247.8K Followers'],
-                    ['name' => 'YAKUZA | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '819K Followers'],
-                    ['name' => 'MAS IPENN | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '248K Followers'],
-                    ['name' => 'OXIICORE | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '146.5K Followers'],
-                    ['name' => 'KAPTENVICTOR | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '563.4K Followers'],
-                    ['name' => 'AS GAME | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '248K Followers'],
-                    ['name' => 'GENSZSAMA | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '68.8K Followers'],
-                    ['name' => 'RAVONISME | JOHEN GAMING', 'role' => 'PUBG Mobile Creator', 'followers' => '256.2K Followers'],
-                ];
-                @endphp
-
-                @foreach($partners as $p)
+                @forelse($partners as $p)
                 <div class="partner-card reveal" style="transition-delay:{{ ($loop->index % 4) * 0.08 }}s">
                     <div class="card-art">
-                        <div class="char-icon">🎮</div>
-                        <div class="brand-text">
-                            <span class="brand-partner">PARTNER</span>
-                            <span class="brand-johen">JOHEN</span>
+                        <div class="card-overlay-top"></div>
+                        <div class="card-overlay-bottom"></div>
+                        <div class="char-illustration">
+                            @if($p->mascot_influencer)
+                                @php $mascotUrl = str_starts_with($p->mascot_influencer, 'maskot/') ? Storage::url($p->mascot_influencer) : asset($p->mascot_influencer); @endphp
+                                <img src="{{ $mascotUrl }}" alt="{{ $p->judul }}" class="char-img">
+                            @else
+                                <div class="char-placeholder">🎮</div>
+                            @endif
+                            <img src="{{ asset('img/maskot/maskotjohen.png') }}" alt="Johen" class="char-img">
+                        </div>
+                        <div class="badge-wrap">
+                            <img src="{{ asset('img/logo/logo_web.png') }}" alt="Johen" class="logo-shield">
+                            <img src="{{ asset('img/icon/partner.png') }}" alt="Partner Johen" class="badge-img">
                         </div>
                     </div>
                     <div class="card-info">
-                        <div class="partner-name">{{ $p['name'] }}</div>
-                        <div class="partner-role">{{ $p['role'] }}</div>
+                        <div class="partner-name">{{ $p->judul }}</div>
+                        <div class="partner-role">{{ $p->role }}</div>
                         <div class="partner-followers">
                             <i class="fab fa-tiktok"></i>
-                            {{ $p['followers'] }}
+                            {{ $p->followers }}
                         </div>
                         <a href="https://wa.me/62812347070" target="_blank" rel="noopener" class="btn-partner-detail">
                             Lihat Detail <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="empty-state" style="grid-column:1/-1">
+                    <div class="icon">🤝</div>
+                    <p>Belum ada partner.</p>
+                </div>
+                @endforelse
             </div>
         </div>
 

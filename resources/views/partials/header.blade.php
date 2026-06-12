@@ -349,7 +349,7 @@
                 </ul>
             </li>
             <li><a href="{{ route('berita') }}"  class="{{ request()->routeIs('berita*') ? 'active' : '' }}">Berita</a></li>
-            <li><a href="{{ route('konten-digital') }}" class="{{ request()->routeIs('konten-digital') ? 'active' : '' }}">Partner</a></li>
+            <li><a href="{{ route('partner') }}" class="{{ request()->routeIs('partner') ? 'active' : '' }}">Partner</a></li>
             <li><a href="{{ route('karir') }}"   class="{{ request()->routeIs('karir')   ? 'active' : '' }}">Karir</a></li>
             <li class="nav-cta"><a href="https://wa.me/62812347070" target="_blank" rel="noopener"><span class="cta-icon"><img src="{{ asset('img/icon/telpon.png') }}" alt="Phone" class="cta-img"></span> Hubungi Kami</a></li>
         </ul>

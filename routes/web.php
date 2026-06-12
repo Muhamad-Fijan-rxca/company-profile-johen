@@ -28,7 +28,7 @@ Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/karir', [KarirController::class, 'index'])->name('karir');
 Route::post('/karir/lamar', [KarirController::class, 'lamar'])->name('karir.lamar');
-Route::get('/konten-digital', [KontenDigitalController::class, 'index'])->name('konten-digital');
+Route::get('/partner', [KontenDigitalController::class, 'index'])->name('partner');
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
 Route::post('/kontak/kirim', [KontakController::class, 'kirim'])->name('kontak.kirim');
 

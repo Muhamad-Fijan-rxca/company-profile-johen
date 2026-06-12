@@ -15,7 +15,7 @@ class BeritaController extends Controller
     public function show(string $slug)
     {
         $berita = Berita::aktif()->where('slug', $slug)->firstOrFail();
-        $lainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(4)->get();
+        $lainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(5)->get();
         $beritaLainnya = Berita::aktif()->where('id', '!=', $berita->id)->latest()->take(8)->get();
         return view('berita.show', compact('berita', 'lainnya', 'beritaLainnya'));
     }

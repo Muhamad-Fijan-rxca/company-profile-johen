@@ -36,9 +36,15 @@
             </div>
 
             <div class="form-group">
+                <label class="form-label">Kutipan (opsional)</label>
+                <textarea name="quote" class="form-control @error('quote') is-invalid @enderror" rows="3" placeholder="Tulis kutipan menarik untuk berita ini...">{{ old('quote', $berita->quote) }}</textarea>
+                @error('quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="form-group">
                 <label class="form-label">Thumbnail (rasio 16:9, maks 2MB)</label>
                 @if($berita->thumbnail)
-                    <div style="margin-bottom:10px"><img src="{{ Storage::url($berita->thumbnail) }}" style="height:80px;border-radius:8px;object-fit:cover" alt="Thumbnail saat ini"></div>
+                    <div style="margin-bottom:10px"><img src="{{ str_starts_with($berita->thumbnail, 'img/') ? asset($berita->thumbnail) : Storage::url($berita->thumbnail) }}" style="height:80px;border-radius:8px;object-fit:cover" alt="Thumbnail saat ini"></div>
                 @endif
                 <input type="file" name="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" accept="image/*">
                 @error('thumbnail')<div class="invalid-feedback">{{ $message }}</div>@enderror

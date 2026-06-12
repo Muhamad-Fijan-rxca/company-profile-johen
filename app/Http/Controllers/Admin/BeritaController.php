@@ -63,6 +63,7 @@ class BeritaController extends Controller
         return $request->validate([
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
+            'quote' => 'nullable|string|max:500',
             'thumbnail' => 'nullable|image|max:2048',
             'aktif' => 'boolean',
         ]);

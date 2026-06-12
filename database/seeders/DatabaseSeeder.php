@@ -45,18 +45,26 @@ class DatabaseSeeder extends Seeder
             [
                 'judul' => 'PT. Johen Sukses Abadi Resmi Berdiri: Solusi Digital Gaming Commerce Terpercaya',
                 'isi' => '<p>PT. Johen Sukses Abadi dengan bangga mengumumkan kehadiran resmi kami sebagai perusahaan digital gaming commerce yang terpercaya di Indonesia. Berdiri sejak tahun 2022, kami hadir sebagai solusi terpercaya dalam menyediakan berbagai layanan kebutuhan pemain game dan komunitas digital.</p><p>Fokus bisnis kami meliputi jual beli akun game online, top up game, jasa joki game, live commerce gaming, serta pengelolaan konten digital. Dengan tim yang berpengalaman dan sistem keamanan berlapis, kami berkomitmen memberikan pengalaman transaksi gaming yang aman, cepat, dan terpercaya.</p><p>Kami memiliki kantor operasional di Ruko Topaz No 60, Summarecon Bandung, siap melayani seluruh gamer Indonesia.</p>',
+                'quote' => 'Peresmian ini menjadi tonggak awal perjalanan kami dalam membangun platform digital gaming yang aman, nyaman, dan terpercaya bagi seluruh gamer di Indonesia.',
+                'thumbnail' => 'img/bg/bg1.jpeg',
             ],
             [
                 'judul' => 'Tips Aman Jual Beli Akun Game dari Johen Gaming',
                 'isi' => '<p>Jual beli akun game semakin populer di Indonesia. Namun, banyak kasus penipuan yang merugikan para gamer. Berikut tips aman dari tim Johen Gaming:</p><p><strong>1. Gunakan platform terpercaya</strong> - Selalu bertransaksi melalui perusahaan resmi yang memiliki kantor operasional dan sistem keamanan terjamin seperti PT. Johen Sukses Abadi.</p><p><strong>2. Verifikasi akun sebelum membeli</strong> - Pastikan akun yang dibeli sesuai deskripsi dengan meminta screenshot atau video bukti.</p><p><strong>3. Hindari transfer langsung</strong> - Gunakan sistem pembayaran yang aman dan hindari transfer langsung ke rekening pribadi penjual.</p><p><strong>4. Cek reputasi penjual</strong> - Pastikan penjual memiliki track record dan testimoni yang baik dari pembeli sebelumnya.</p>',
+                'quote' => 'Keamanan adalah prioritas utama kami dalam setiap transaksi jual beli akun game.',
+                'thumbnail' => 'img/bg/bg2.jpeg',
             ],
             [
                 'judul' => 'Johen Gaming Kini Hadir dengan Live Commerce untuk Pengalaman Belanja Lebih Interaktif',
                 'isi' => '<p>PT. Johen Sukses Abadi (Johen Gaming) terus berinovasi dengan meluncurkan layanan live commerce gaming. Melalui live streaming di media sosial, pelanggan dapat melihat langsung akun yang dijual, bertanya secara real-time, dan bertransaksi dengan lebih transparan.</p><p>Layanan live commerce ini mencakup penjualan akun game, top up, dan sesi joki game yang disiarkan langsung oleh host dan kreator konten profesional kami.</p><p>Ikuti akun media sosial Johen Gaming untuk jadwal live streaming terbaru: @johengaming.mlbb, @johengaming.pubg, dan @johengaming.offline.</p>',
+                'quote' => 'Belanja sambil live streaming — pengalaman baru yang lebih interaktif dan transparan.',
+                'thumbnail' => 'img/bg/bg1.jpeg',
             ],
             [
                 'judul' => 'Lowongan Kerja: Johen Gaming Kembangkan Tim Profesional',
                 'isi' => '<p>PT. Johen Sukses Abadi (Johen Gaming) sedang membuka lowongan kerja untuk berbagai posisi dalam rangka mengembangkan tim profesional kami. Dengan struktur organisasi yang terdiri dari CEO, General Manager, HR, IT, Resepsionis, Head of Store, Admin, Host/Joki, dan Content Creator, kami mencari talenta terbaik yang ingin bergabung dalam industri gaming commerce.</p><p>Kami memiliki divisi store yang terdiri dari Johen MLBB, Johen Roblox, Johen PUBG, dan Monkey PUBG. Budaya kerja kami profesional, disiplin, bertanggung jawab, dan saling menghargai.</p><p>Bagi Anda yang berminat, pantau halaman karir website kami untuk informasi lowongan terbaru.</p>',
+                'quote' => 'Kami mencari talenta terbaik untuk bergabung dan berkembang bersama Johen Gaming.',
+                'thumbnail' => 'img/bg/bg2.jpeg',
             ],
         ];
 
