@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'PT. Johen Sukses Abadi') | JOHEN GAMING</title>
     <meta name="description" content="@yield('meta_desc', 'PT. Johen Sukses Abadi (JOHEN GAMING) - Perusahaan digital gaming commerce terpercaya di Bandung. Jual beli akun game online, top up game, jasa joki, live commerce, dan konten digital gaming.')">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
