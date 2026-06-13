@@ -6,6 +6,7 @@ use App\Models\Produk;
 use App\Models\Berita;
 use App\Models\Lowongan;
 use App\Models\KontenDigital;
+use App\Models\Sosmed;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -152,6 +153,38 @@ class DatabaseSeeder extends Seeder
 
         foreach ($kontenDigital as $k) {
             KontenDigital::create(array_merge($k, ['aktif' => true]));
+        }
+
+        // Sosial Media
+        $sosmed = [
+            [
+                'platform' => 'ig', 'name' => 'Johen Gaming', 'username' => '@johengaming.id',
+                'followers' => '12.5K', 'desc' => 'Official Instagram Johen Gaming — Info promo, live schedule, dan konten gaming terbaru.',
+                'url' => 'https://instagram.com/johengaming.id', 'btn_text' => 'Ikuti Instagram',
+                'urutan' => 1,
+            ],
+            [
+                'platform' => 'ig', 'name' => 'Johen MLBB', 'username' => '@johengaming.mlbb',
+                'followers' => '8.2K', 'desc' => 'Khusus top up, jual akun, dan joki Mobile Legends. Live setiap hari!',
+                'url' => 'https://instagram.com/johengaming.mlbb', 'btn_text' => 'Ikuti IG MLBB',
+                'urutan' => 2,
+            ],
+            [
+                'platform' => 'tt', 'name' => 'Johen Gaming Official', 'username' => '@johengaming.id',
+                'followers' => '24.1K', 'desc' => 'TikTok resmi Johen Gaming — Konten live jual beli akun, top up, dan giveaway.',
+                'url' => 'https://tiktok.com/@johengaming.id', 'btn_text' => 'Ikuti TikTok',
+                'urutan' => 1,
+            ],
+            [
+                'platform' => 'tt', 'name' => 'Johen Gaming PUBG', 'username' => '@johengaming.pubg',
+                'followers' => '5.7K', 'desc' => 'Live jual beli akun PUBG, top up UC, dan joki rank profesional.',
+                'url' => 'https://tiktok.com/@johengaming.pubg', 'btn_text' => 'Follow TikTok',
+                'urutan' => 2,
+            ],
+        ];
+
+        foreach ($sosmed as $s) {
+            Sosmed::create(array_merge($s, ['aktif' => true]));
         }
     }
 }

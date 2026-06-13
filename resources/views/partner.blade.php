@@ -157,7 +157,7 @@
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid #1e3a5f;
-    background: linear-gradient(180deg, #061F59, #020D2E);
+    background: linear-gradient(180deg, #061F59 25%, #020D2E 55%);
     position: relative;
     transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
@@ -166,7 +166,7 @@
     position: absolute;
     inset: 0;
     background: url("{{ asset('img/bg/grid.png') }}") center / cover no-repeat;
-    opacity: 0.15;
+    opacity: 0.40;
     pointer-events: none;
     z-index: 0;
 }
@@ -202,7 +202,7 @@
     bottom: 0; left: 0; right: 0;
     height: 55%;
     background: linear-gradient(0deg, rgba(6,31,89,0.85) 0%, rgba(6,31,89,0.2) 50%, transparent 100%);
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
     transition: opacity 0.35s ease;
 }
@@ -223,7 +223,7 @@
 }
 .partner-card .card-art .char-illustration .char-img {
     width: auto;
-    height: 220px;
+    height: 250px;
     object-fit: contain;
     object-position: center bottom;
     opacity: 0.85;
@@ -237,6 +237,8 @@
     z-index: 1;
 }
 .partner-card .card-art .char-illustration .char-img:last-child {
+    height: 295px;
+    opacity: 1;
     z-index: 2;
 }
 .partner-card .card-art .char-placeholder {
@@ -261,23 +263,25 @@
 }
 .partner-card .card-art .badge-wrap .logo-shield {
     position: absolute;
-    bottom: 100%;
+    top: 33%;
     left: 50%;
-    transform: translateX(-50%) translateY(0);
-    width: 48px;
-    height: 48px;
-    transition: transform 0.3s ease;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
-    margin-bottom: 4px;
     object-fit: contain;
+    filter: drop-shadow(0 0 0 transparent);
 }
 .partner-card:hover .card-art .badge-wrap .logo-shield {
-    transform: translateX(-50%) translateY(-16px);
+    transform: translate(-50%, -110%) scale(1.25);
+    filter: drop-shadow(0 0 18px rgba(0, 207, 255, 0.7)) drop-shadow(0 0 40px rgba(124, 58, 237, 0.4));
 }
 .partner-card .card-art .badge-wrap .badge-img {
     position: relative;
     z-index: 2;
-    width: 160px;
+    width: 250px;
+    margin-top: 20px;
     height: auto;
     object-fit: contain;
     display: block;
@@ -293,6 +297,7 @@
     z-index: 1;
     padding: 16px 20px 20px;
     border-top: 1px solid rgba(30,58,95,0.5);
+    background: #041640;
 }
 
 .partner-card .card-info .partner-name {
@@ -305,7 +310,7 @@
 
 .partner-card .card-info .partner-role {
     font-size: 11px;
-    color: #6B7280;
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 10px;
 }
 
@@ -316,6 +321,8 @@
     align-items: center;
     gap: 6px;
     margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(30, 58, 95, 0.6);
 }
 
 .partner-card .card-info .partner-followers i {
@@ -383,22 +390,16 @@
 .sosmed-card .card-header .icon-circle {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    color: white;
     flex-shrink: 0;
 }
 
-.sosmed-card .card-header .icon-circle.ig {
-    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-}
-
-.sosmed-card .card-header .icon-circle.tt {
-    background: #1a1a2e;
-    color: #25F4EE;
+.sosmed-card .card-header .icon-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .sosmed-card .card-header .account-info .name {
@@ -435,27 +436,20 @@
 }
 
 .sosmed-card .thumb-strip {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     gap: 4px;
     padding: 0 20px 16px;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
-.sosmed-card .thumb-strip::-webkit-scrollbar { display: none; }
-
 .sosmed-card .thumb-strip .thumb-item {
-    width: 72px;
-    height: 72px;
+    aspect-ratio: 1 / 1;
     border-radius: 8px;
-    flex-shrink: 0;
     background: linear-gradient(135deg, #1A2035, #2A3045);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    object-fit: cover;
     overflow: hidden;
 }
 
@@ -612,81 +606,81 @@
             </div>
 
             <div class="grid-2-sosmed">
-                @php
-                $sosmed = [
-                    [
-                        'platform' => 'ig',
-                        'name' => 'JOHEN GAMING OFFICIAL',
-                        'username' => '@johengaming.id',
-                        'followers' => '124K',
-                        'thumbnails' => ['🎮','📱','🎯','🔥','👑'],
-                        'desc' => 'Konten seru seputar gaming, top up, joki, dan giveaway menarik! Follow sekarang biar gak ketinggalan info terbaru.',
-                        'url' => 'https://www.instagram.com/johengaming.id/',
-                        'btn' => 'Follow Instagram',
-                    ],
-                    [
-                        'platform' => 'tt',
-                        'name' => 'JOHEN GAMING OFFLINE',
-                        'username' => '@johengaming.offline_',
-                        'followers' => '113.2K',
-                        'thumbnails' => ['🎬','🎪','🎯','🔥','💎'],
-                        'desc' => 'Konten seru seputar gaming, top up, joki, dan giveaway menarik! Follow sekarang biar gak ketinggalan info terbaru.',
-                        'url' => 'https://www.tiktok.com/@johengaming.offline_',
-                        'btn' => 'Follow TikTok',
-                    ],
-                    [
-                        'platform' => 'ig',
-                        'name' => 'JOHEN GAMING OFFICIAL',
-                        'username' => '@johengaming.id',
-                        'followers' => '124K',
-                        'thumbnails' => ['🎮','📱','🎯','🔥','👑'],
-                        'desc' => 'Konten seru seputar gaming, top up, joki, dan giveaway menarik! Follow sekarang biar gak ketinggalan info terbaru.',
-                        'url' => 'https://www.instagram.com/johengaming.id/',
-                        'btn' => 'Follow Instagram',
-                    ],
-                    [
-                        'platform' => 'tt',
-                        'name' => 'JOHEN GAMING | PUBG #1 🎮',
-                        'username' => '@johenofficial',
-                        'followers' => '246.2K',
-                        'thumbnails' => ['🎯','🔥','👑','💎','🎪'],
-                        'desc' => 'Konten seru seputar gaming, top up, joki, dan giveaway menarik! Follow sekarang biar gak ketinggalan info terbaru.',
-                        'url' => 'https://www.tiktok.com/@johenofficial',
-                        'btn' => 'Follow TikTok',
-                    ],
-                ];
-                @endphp
-
-                @foreach($sosmed as $s)
-                <div class="sosmed-card reveal" style="transition-delay:{{ ($loop->index % 2) * 0.1 }}s">
-                    <div class="card-header">
-                        <div class="left">
-                            <div class="icon-circle {{ $s['platform'] }}">
-                                <i class="fab fa-{{ $s['platform'] == 'ig' ? 'instagram' : 'tiktok' }}"></i>
+                @php $maxIdx = max($sosmedIg->count(), $sosmedTt->count()); @endphp
+                @for($i = 0; $i < $maxIdx; $i++)
+                    @if(isset($sosmedIg[$i]))
+                        @php $s = $sosmedIg[$i]; @endphp
+                        <div class="sosmed-card reveal" style="transition-delay:{{ ($i % 2) * 0.1 }}s">
+                            <div class="card-header">
+                                <div class="left">
+                                    <div class="icon-circle">
+                                        <img src="{{ asset('img/logo/instagramapk.png') }}" alt="Instagram">
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="name">{{ $s->name }}</div>
+                                        <div class="username">{{ $s->username }}</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <span class="followers-count">{{ $s->followers }}</span>
+                                    <span class="followers-label">Followers</span>
+                                </div>
                             </div>
-                            <div class="account-info">
-                                <div class="name">{{ $s['name'] }}</div>
-                                <div class="username">{{ $s['username'] }}</div>
+                            <div class="thumb-strip">
+                                @forelse($s->thumbnails ?? [] as $thumb)
+                                <div class="thumb-item">
+                                    @php $thumbUrl = str_starts_with($thumb, 'sosmed/') ? Storage::url($thumb) : asset($thumb); @endphp
+                                    <img src="{{ $thumbUrl }}" alt="Thumbnail">
+                                </div>
+                                @empty
+                                <div class="thumb-item" style="font-size:24px">📸</div>
+                                @endforelse
+                            </div>
+                            <div class="card-footer-sosmed">
+                                <div class="desc">{{ $s->desc }}</div>
+                                <a href="{{ $s->url }}" target="_blank" rel="noopener" class="btn-follow">
+                                    {{ $s->btn_text }} <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="right">
-                            <span class="followers-count">{{ $s['followers'] }}</span>
-                            <span class="followers-label">Followers</span>
+                    @endif
+                    @if(isset($sosmedTt[$i]))
+                        @php $s = $sosmedTt[$i]; @endphp
+                        <div class="sosmed-card reveal" style="transition-delay:{{ ($i % 2) * 0.1 }}s">
+                            <div class="card-header">
+                                <div class="left">
+                                    <div class="icon-circle">
+                                        <img src="{{ asset('img/logo/tiktokapk.png') }}" alt="TikTok">
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="name">{{ $s->name }}</div>
+                                        <div class="username">{{ $s->username }}</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <span class="followers-count">{{ $s->followers }}</span>
+                                    <span class="followers-label">Followers</span>
+                                </div>
+                            </div>
+                            <div class="thumb-strip">
+                                @forelse($s->thumbnails ?? [] as $thumb)
+                                <div class="thumb-item">
+                                    @php $thumbUrl = str_starts_with($thumb, 'sosmed/') ? Storage::url($thumb) : asset($thumb); @endphp
+                                    <img src="{{ $thumbUrl }}" alt="Thumbnail">
+                                </div>
+                                @empty
+                                <div class="thumb-item" style="font-size:24px">🎬</div>
+                                @endforelse
+                            </div>
+                            <div class="card-footer-sosmed">
+                                <div class="desc">{{ $s->desc }}</div>
+                                <a href="{{ $s->url }}" target="_blank" rel="noopener" class="btn-follow">
+                                    {{ $s->btn_text }} <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="thumb-strip">
-                        @foreach($s['thumbnails'] as $thumb)
-                        <div class="thumb-item">{{ $thumb }}</div>
-                        @endforeach
-                    </div>
-                    <div class="card-footer-sosmed">
-                        <div class="desc">{{ $s['desc'] }}</div>
-                        <a href="{{ $s['url'] }}" target="_blank" rel="noopener" class="btn-follow">
-                            {{ $s['btn'] }} <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
+                    @endif
+                @endfor
             </div>
         </div>
 

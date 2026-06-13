@@ -11,7 +11,7 @@ class KontenDigitalController extends Controller
 {
     public function index()
     {
-        $konten = KontenDigital::orderBy('urutan')->get();
+        $konten = KontenDigital::whereIn('kategori', ['Live Commerce', 'Konten Digital'])->orderBy('urutan')->get();
 
         return view('admin.konten-digital.index', compact('konten'));
     }
@@ -77,12 +77,9 @@ class KontenDigitalController extends Controller
     {
         return $request->validate([
             'judul' => 'required|string|max:255',
-            'kategori' => 'required|in:Live Commerce,Konten Digital,Partner',
+            'kategori' => 'required|in:Live Commerce,Konten Digital',
             'deskripsi' => 'required|string',
-            'role' => 'nullable|string|max:255',
-            'followers' => 'nullable|string|max:100',
             'gambar' => 'nullable|image|max:2048',
-            'mascot_influencer' => 'nullable|image|max:2048',
             'urutan' => 'required|integer|min:0',
             'unggulan' => 'boolean',
             'aktif' => 'boolean',

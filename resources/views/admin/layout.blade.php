@@ -149,6 +149,12 @@
             <a href="{{ route('admin.konten-digital.index') }}" class="{{ request()->routeIs('admin.konten-digital*') ? 'active' : '' }}">
                 <i class="fas fa-photo-video"></i> Konten Digital
             </a>
+            <a href="{{ route('admin.partner.index') }}" class="{{ request()->routeIs('admin.partner*') ? 'active' : '' }}">
+                <i class="fas fa-handshake"></i> Partner
+            </a>
+            <a href="{{ route('admin.sosmed.index') }}" class="{{ request()->routeIs('admin.sosmed*') ? 'active' : '' }}">
+                <i class="fas fa-share-alt"></i> Sosial Media
+            </a>
 
             <div class="nav-section-title">Karir</div>
             <a href="{{ route('admin.lowongan.index') }}" class="{{ request()->routeIs('admin.lowongan*') ? 'active' : '' }}">

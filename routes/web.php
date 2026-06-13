@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\LowonganController;
 use App\Http\Controllers\Admin\PelamarController;
 use App\Http\Controllers\Admin\PesanController;
 use App\Http\Controllers\Admin\KontenDigitalController as AdminKontenDigitalController;
+use App\Http\Controllers\Admin\SosmedController;
+use App\Http\Controllers\Admin\PartnerController;
 
 // ─── PUBLIC ROUTES ───────────────────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -57,6 +59,12 @@ Route::prefix('johen-admin-secret')->name('admin.')->group(function () {
 
         // Konten Digital
         Route::resource('konten-digital', AdminKontenDigitalController::class)->except(['show']);
+
+        // Partner
+        Route::resource('partner', PartnerController::class)->except(['show']);
+
+        // Sosial Media
+        Route::resource('sosmed', SosmedController::class)->except(['show']);
 
         // Pelamar
         Route::get('/pelamar', [PelamarController::class, 'index'])->name('pelamar.index');

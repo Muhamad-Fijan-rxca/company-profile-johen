@@ -23,9 +23,9 @@ Font Awesome 6.5.0 (CDN) di kedua layout.
 - **Admin**: prefix `/johen-admin-secret`, name `admin.*`. Bare Laravel auth (no Breeze/Jetstream). Logout **wajib** POST + `@csrf`.
 - **14 public routes**: home, tentang, produk+4 sub-kategori, berita index+show, karir GET+POST, konten-digital, kontak GET+POST. Tidak ada API routes.
 - **Layouts**: `layouts.app` (public) → `partials.header` + `<main>` + `partials.cta` + `partials.footer`; `admin.layout` (admin). Keduanya pakai `<style>` inline + Poppins (Google Fonts).
-- **7 Models**: `User`, `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`. Scopes: `Aktif()` pada semua model konten; `Unggulan()` pada Produk & KontenDigital.
+- **8 Models**: `User`, `Produk`, `Berita`, `Lowongan`, `Pelamar`, `PesanKontak`, `KontenDigital`, `Sosmed`. Scopes: `Aktif()` pada semua model konten; `Unggulan()` pada Produk & KontenDigital; `Platform()` pada Sosmed.
 - **Berita** pakai `Berita::generateSlug($judul)` (duplicate suffix `-2`, `-3`...).
-- **Seeder**: hardcoded. Produk & KontenDigital diurutkan via kolom `urutan`.
+- **Seeder**: hardcoded. Produk, KontenDigital, & Sosmed diurutkan via kolom `urutan`.
 - **Paginator**: custom `vendor.pagination.simple` (prev/next) via `AppServiceProvider`.
 - **Email**: `emails.notif_kontak` — controller hanya mengirim `cs`, ada branch `jual`/`beli` di template **jangan diaktifkan**.
 - **Tailwind v4**: konfigurasi di `resources/css/app.css` (`@import 'tailwindcss'` + `@source` directives), tanpa `tailwind.config.js`.
@@ -41,7 +41,9 @@ Font Awesome 6.5.0 (CDN) di kedua layout.
 - **Font mismatch**: `vite.config.js` load Instrument Sans via Bunny CDN, tapi Blade layout pakai Poppins dari Google Fonts. Konfigurasi font Vite tidak terpakai.
 - **PesanKontak**: controller validate `tujuan => required|in:cs` saja. Migration punya enum `jual`/`beli`/`cs` — **jangan aktifkan** branch dormant.
 - **Produk index**: filter `where('kategori', '!=', 'Konten Digital')`. 4 method sub-kategori bypass filter ini dengan kategori hardcoded.
-- **Admin CRUD**: `->except(['show'])` untuk Produk, Berita, Lowongan, KontenDigital. Pelamar = read-only (index/destroy). Pesan = index/show/destroy.
+- **Admin CRUD**: `->except(['show'])` untuk Produk, Berita, Lowongan, KontenDigital, Partner. Pelamar = read-only (index/destroy). Pesan = index/show/destroy. Sosmed = full CRUD dengan upload avatar & thumbnails (max 4).
+- **PartnerController** menggunakan model `KontenDigital` dengan filter `kategori = 'Partner'`. Admin partner menyimpan `role` & `followers` yang spesifik untuk partner, tapi disimpan di tabel `konten_digital`.
+- **KontenDigitalController** (admin) sengaja mengecualikan `kategori = 'Partner'` via `whereIn('kategori', ['Live Commerce', 'Konten Digital'])` — Partner dikelola terpisah.
 - **`storage:link` tidak ada di `composer setup`** — harus manual.
 - **`resources/js/app.js`**: kosong (`//`), tidak ada JS framework.
 - **`backup-desain-lama/` & `screenshot-figma/`**: aset desain, bukan kode aplikasi.
